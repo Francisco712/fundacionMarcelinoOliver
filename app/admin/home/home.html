@@ -1,0 +1,126 @@
+
+		<section class="body">
+
+			 <!-- start: header -->
+			<header class="header">
+				<div class="logo-container">
+					<a href="#!/admin/home" class="logo">
+						<img src="images/logo.png" height="35" alt="Fundación Marcelino Oliver" />
+					</a>
+					<div class="visible-xs toggle-sidebar-left" data-toggle-class="sidebar-left-opened" data-target="html" data-fire-event="sidebar-left-opened">
+						<i class="fa fa-bars" aria-label="Toggle sidebar"></i>
+					</div>
+				</div>
+			
+				<!-- start: search & user box -->
+				<div class="header-right">
+
+                    <span class="separator"></span>
+
+                    <div id="userbox" class="userbox">
+                        <a type="button" ng-click="logout()" class="mb-xs mt-xs mr-xs btn btn-primary">Logout</a>
+                    </div>
+                </div>
+				<!-- end: search & user box -->
+			</header>
+
+			<div class="inner-wrapper">
+                
+                 <aside id="sidebar-left" class="sidebar-left">
+				
+                    <div class="sidebar-header">
+                        <div class="sidebar-title">
+                            Navegación
+                        </div>
+                        <div class="sidebar-toggle hidden-xs" data-toggle-class="sidebar-left-collapsed" data-target="html" data-fire-event="sidebar-left-toggle">
+                            <i class="fa fa-bars" aria-label="Toggle sidebar"></i>
+                        </div>
+                    </div>
+
+                    <div class="nano has-scrollbar">
+                        <div class="nano-content">
+                            <nav id="menu" class="nav-main" role="navigation">
+                                <ul class="nav nav-main">
+                                    <li>
+                                        <a href="#!/admin/home">
+                                            <i class="fa fa-home" aria-hidden="true"></i>
+                                            <span>Inicio</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#!/admin/profile">
+                                            <i class="fa fa-user" aria-hidden="true"></i>
+                                            <span>Perfil</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#!/admin/noticias">
+                                            <i class="fa fa-newspaper-o" aria-hidden="true"></i>
+                                            <span>Noticias</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#!/admin/messages">
+                                            <i class="fa fa-envelope" aria-hidden="true"></i>
+                                            <span>Mensajes</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#!/admin/help">
+                                            <i class="fa fa-question-circle" aria-hidden="true"></i>
+                                            <span>Ayuda</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </aside>
+				
+				<section role="main" class="content-body" ng-init="setTab(1)">
+					<header class="page-header">
+						<h2>Inicio</h2>
+                        
+					</header>
+					
+					<img src="images/logo.png" />
+				</section>
+			</div>
+
+			<aside id="sidebar-right" class="sidebar-right">
+				<div class="nano">
+					<div class="nano-content">
+						<a href="#" class="mobile-close visible-xs">
+							Collapse <i class="fa fa-chevron-right"></i>
+						</a>
+			
+						<div class="sidebar-right-wrapper">
+			
+			
+						</div>
+					</div>
+				</div>
+			</aside>
+		</section>
+
+		<!-- Vendor -->
+		<script src="assets/vendor/jquery/jquery.js"></script>
+		<script src="assets/vendor/jquery-browser-mobile/jquery.browser.mobile.js"></script>
+		<script src="assets/vendor/bootstrap/js/bootstrap.js"></script>
+		<script src="assets/vendor/nanoscroller/nanoscroller.js"></script>
+		<script src="assets/vendor/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+		<script src="assets/vendor/magnific-popup/jquery.magnific-popup.js"></script>
+		<script src="assets/vendor/jquery-placeholder/jquery-placeholder.js"></script>
+		
+		<!-- Specific Page Vendor -->
+		<script src="assets/vendor/autosize/autosize.js"></script>
+		
+		<!-- Theme Base, Components and Settings -->
+		<script src="assets/javascripts/theme.js"></script>
+		
+		<!-- Theme Custom -->
+		<script src="assets/javascripts/theme.custom.js"></script>
+		
+		<!-- Theme Initialization Files -->
+		<script src="assets/javascripts/theme.init.js"></script>
+

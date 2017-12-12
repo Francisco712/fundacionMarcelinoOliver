@@ -1,0 +1,144 @@
+.modalLogin{
+    width: 40%;
+    margin-left: 30%;
+    background-color: white;
+    margin-top: 100px;
+    height: 470px;
+}
+
+.modal-body {
+    text-align: center;
+}
+
+.modalImagePubli{
+    width: 50%;
+    margin-left: 20%;
+    background-color: white;
+    margin-top: 100px;
+    height: 60%;
+}
+
+.modalImageEvento{
+    width: 50%;
+    margin-left: 20%;
+    background-color: white;
+    margin-top: 100px;
+    height: 72%;
+}
+
+.separate{
+    border-bottom: 1px solid #D1C3C0;
+}
+
+.img-mini-perfil{
+    float:left;
+    width:40px;
+    height:40px; 
+    margin-right:20px;
+}
+
+.img-perfil{
+    width:240px;
+    height:200px; 
+}
+
+.linkToProfile:hover {
+    font-weight: bold;
+    font-style: italic;
+    text-shadow: 2px 2px 2px #aaa;
+    letter-spacing: 1px;
+    text-decoration: underline;
+    color:brown;
+}
+
+.div-border {
+    -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.41);
+    -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.41);
+    box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.41);
+}
+
+.inputfile {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+
+.inputfile + label {
+    max-width: 88%;
+    font-size: 1.25rem;
+    font-weight: 700;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    cursor: pointer;
+    display: inline-block;
+    overflow: hidden;
+    padding: 0.625rem 1.25rem;
+}
+
+.inputfile + label svg {
+    width: 1em;
+    height: 1em;
+    vertical-align: middle;
+    fill: currentColor;
+    margin-top: -0.25em;
+    margin-right: 0.25em;
+}
+
+.spaninputfile {
+	font-size:16px; 
+	font-weight:normal;
+	font-family: 'Lato';
+}
+
+.inputfile-7 + label {
+    color: #7FC0E2;
+}
+
+.inputfile-7 + label {
+    border: 1px solid #7FC0E2;
+    background-color: #fff;
+    padding: 0;
+}
+
+.inputfile-7:focus + label,
+.inputfile-7.has-focus + label,
+.inputfile-7 + label:hover {
+    border-color: #71A0B8;
+}
+
+.inputfile-7 + label span,
+.inputfile-7 + label strong {
+    padding: 0.625rem 1.25rem;
+}
+
+.inputfile-7 + label span {
+    width: 120px;
+    min-height: 2em;
+    display: inline-block;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    vertical-align: top;
+}
+
+.inputfile-7 + label strong {
+    height: 100%;
+    color: #fff;
+    background-color: #7FC0E2;
+    display: inline-block;
+}
+
+.inputfile-7:focus + label strong,
+.inputfile-7.has-focus + label strong,
+.inputfile-7 + label:hover strong {
+    background-color: #71A0B8;
+}
+
+@media screen and (max-width: 50em) {
+	.inputfile-7 + label strong {
+		display: block;
+	}
+}

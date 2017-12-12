@@ -1,0 +1,184 @@
+
+		<section class="body">
+
+			 <!-- start: header -->
+			<header class="header">
+				<div class="logo-container">
+					<a href="#!/admin/home" class="logo">
+						<img src="images/logo.png" height="35" alt="Fundación Marcelino Oliver" />
+					</a>
+					<div class="visible-xs toggle-sidebar-left" data-toggle-class="sidebar-left-opened" data-target="html" data-fire-event="sidebar-left-opened">
+						<i class="fa fa-bars" aria-label="Toggle sidebar"></i>
+					</div>
+				</div>
+			
+				<!-- start: search & user box -->
+				<div class="header-right">
+
+                    <span class="separator"></span>
+
+                    <div id="userbox" class="userbox">
+                        <a type="button" ng-click="logout()" class="mb-xs mt-xs mr-xs btn btn-primary">Logout</a>
+                    </div>
+                </div>
+				<!-- end: search & user box -->
+			</header>
+
+			<div class="inner-wrapper">
+                
+                 <aside id="sidebar-left" class="sidebar-left">
+				
+                    <div class="sidebar-header">
+                        <div class="sidebar-title">
+                            Navegación
+                        </div>
+                        <div class="sidebar-toggle hidden-xs" data-toggle-class="sidebar-left-collapsed" data-target="html" data-fire-event="sidebar-left-toggle">
+                            <i class="fa fa-bars" aria-label="Toggle sidebar"></i>
+                        </div>
+                    </div>
+
+                    <div class="nano has-scrollbar">
+                        <div class="nano-content">
+                            <nav id="menu" class="nav-main" role="navigation">
+                                <ul class="nav nav-main">
+                                    <li>
+                                        <a href="#!/admin/home">
+                                            <i class="fa fa-home" aria-hidden="true"></i>
+                                            <span>Inicio</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#!/admin/profile">
+                                            <i class="fa fa-user" aria-hidden="true"></i>
+                                            <span>Perfil</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#!/admin/noticias">
+                                            <i class="fa fa-newspaper-o" aria-hidden="true"></i>
+                                            <span>Noticias</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#!/admin/messages">
+                                            <i class="fa fa-envelope" aria-hidden="true"></i>
+                                            <span>Mensajes</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#!/admin/help">
+                                            <i class="fa fa-question-circle" aria-hidden="true"></i>
+                                            <span>Ayuda</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </aside>
+				
+				<section role="main" class="content-body" ng-init="setTab(1)">
+					<header class="page-header">
+						<h2>Ayuda</h2>
+                        
+					</header>
+					
+					<div class="wrapper">
+                        <h1 class="title">Roles de usuario</h1>
+                        <hr />
+                        <ul class="help">
+                            <li><strong>Administrador:</strong> El usuario con el rol de administrador tendrá permisos para acceder a todas las
+                            funcionalidades de la aplicación. Las acciones que puede realizar este tipo de usuarios son:
+                                <ul>
+                                    <li>Creación de nuevos usuarios.</li>
+                                    <li>Modificación de usuarios.</li>
+                                    <li>Eliminación de usuarios.</li>
+                                    <li>Creación de nuevas noticias.</li>
+                                    <li>Modificación de noticias.</li>
+                                    <li>Eliminación de noticias.</li>
+                                    <li>Validar nuevas noticias.</li>
+                                    <li>Consulta de acciones realizadas por todos los usuarios.</li>
+                                    <li>Acceso a mensajes privados entre usuarios registrados en la aplicación</li>
+                                    <li>Acceso a la consulta de la ayuda de la aplicación.</li>
+                                </ul>
+                            </li>
+                            <br />
+                            <li><strong>Cooperador:</strong> El usuario con el rol de cooperador no tendrá todos los permisos y por lo tanto no podrá acceder a todas las funcionalidades de la aplicación. Las acciones que puede realizar este tipo de usuarios son:
+                                <ul>
+                                    <li>Creación de nuevas noticias.</li>
+                                    <li>Modificación de noticias.</li>
+                                    <li>Eliminación de noticias.</li>
+                                    <li>Acceso a mensajes privados entre usuarios registrados en la aplicación</li>
+                                    <li>Acceso a la consulta de la ayuda de la aplicación.</li>
+                                </ul>
+                            </li>
+                            <br />
+                            <li><strong>Ayudante:</strong> El usuario con el rol de ayudante no tendrá todos los permisos y por lo tanto no podrá acceder a todas las funcionalidades de la aplicación. Las acciones que puede realizar este tipo de usuarios son:
+                                <ul>
+                                    <li>Creación de nuevas noticias. Estas noticias tienen que ser validadas con anterioridad por un usuario tipo Administrador.</li>
+                                    <li>Modificación de noticias. Estos cambios tienen que ser validados con anterioridad por un usuario tipo Administrador.</li>
+                                    <li>Acceso a mensajes privados entre usuarios registrados en la aplicación</li>
+                                    <li>Acceso a la consulta de la ayuda de la aplicación.</li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <h1 class="title">Noticias</h1>
+                        <hr />
+                        <p>La funcionalidad de esta parte de la aplicación es muy sencilla. En la <i>Figura 1</i>, podemos ver graficamente como está estructurada. A esta parte de la aplicación como hemos expuesto en el apartado "Roles de usuario" es accesible con todos los perfiles de usuario, aunque con peculiaridades que veremos a continuación.</p>
+                        
+                        <div class="figure">
+                            <p><img class="scaled" src="images/noticias.png" alt="Pestaña noticias"></p>
+                            <p>Figura 1</p>
+                        </div>
+                        <p>1.- Busqueda de noticia: </p>
+                            <ul class="help">
+                                <li>Caja de texto en la que podemos buscar cualquier noticia en la que encuentre coincidencia en las columnas <strong>Título</strong>, <strong>Resumen</strong> o <strong>Fecha</strong> (formato YYYY-MM-DD).Ej: Orihuela mostrará solamente la segunda fila.</li>
+                                <li>Botón "Nueva noticia": Este botón mostrará la ventana utilizada para crear una nueva noticia, creada y validada para los perfiles de usuario <strong>Administrador</strong> y <strong>Coordinador</strong> y creada y pendiente de validación para el caso del perfil de <strong>Ayudante</strong>.</li>
+                            </ul>
+                        <p>2.- Tabla de información, en esta tabla se muestra la mayor parte de la información relacionada con cada noticia. En la columna <strong>Título</strong> se muestra le Título relacionado con la noticia en cuestión y será el que se mostrará al usuario. En la columna <strong>Resumen</strong> se muestra el Resumen relacionado con la noticia en cuestion y será el que se mostrará al usuario. La columna <strong>Fecha</strong> se muestra la fecha en la que se creó la noticia en cuestión y será la que se mostrará al usuario.</p>
+                        <p>3.- Opciones de noticia: </p>
+                            <ul class="help">
+                                <li>Boton "i": Este botón muestra la información de la noticia de la que se quiere buscar información como es el título, el resumen y el contenido.</li>
+                                <li>Botón "x": Este botón elimina la noticia seleccionada por completo.</li>
+                            </ul>
+                    </div>
+				</section>
+			</div>
+
+			<aside id="sidebar-right" class="sidebar-right">
+				<div class="nano">
+					<div class="nano-content">
+						<a href="#" class="mobile-close visible-xs">
+							Collapse <i class="fa fa-chevron-right"></i>
+						</a>
+			
+						<div class="sidebar-right-wrapper">
+			
+			
+						</div>
+					</div>
+				</div>
+			</aside>
+		</section>
+
+		<!-- Vendor -->
+		<script src="assets/vendor/jquery/jquery.js"></script>
+		<script src="assets/vendor/jquery-browser-mobile/jquery.browser.mobile.js"></script>
+		<script src="assets/vendor/bootstrap/js/bootstrap.js"></script>
+		<script src="assets/vendor/nanoscroller/nanoscroller.js"></script>
+		<script src="assets/vendor/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+		<script src="assets/vendor/magnific-popup/jquery.magnific-popup.js"></script>
+		<script src="assets/vendor/jquery-placeholder/jquery-placeholder.js"></script>
+		
+		<!-- Specific Page Vendor -->
+		<script src="assets/vendor/autosize/autosize.js"></script>
+		
+		<!-- Theme Base, Components and Settings -->
+		<script src="assets/javascripts/theme.js"></script>
+		
+		<!-- Theme Custom -->
+		<script src="assets/javascripts/theme.custom.js"></script>
+		
+		<!-- Theme Initialization Files -->
+		<script src="assets/javascripts/theme.init.js"></script>
+
