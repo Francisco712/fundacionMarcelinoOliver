@@ -1,11 +1,12 @@
 <?php
 
-$db_host="127.0.0.1:3306";
-$db_name="fmoliver";
-$db_connection = mysqli_connect($db_host, "root", "root", $db_name);
+include '../../common/connectBbdd.php';
 
-$resultado = mysqli_query($db_connection,"SELECT * FROM tpw_noticias");          
-
+if($_GET['orden'] == 'true'){
+    $resultado = mysqli_query($db_connection,"SELECT * FROM noticias ORDER BY FECHA ASC");
+}else{
+    $resultado = mysqli_query($db_connection,"SELECT * FROM noticias ORDER BY FECHA DESC");
+}
 $json = array();
 
 while($row =mysqli_fetch_assoc($resultado)) {

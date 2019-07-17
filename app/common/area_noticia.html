@@ -1,0 +1,16 @@
+<div class="home-notice">
+    <h1 class="head-container">ÚLTIMAS NOTICIAS</h1>
+    <div class="card-deck">
+      <div class="card" ng-repeat="notice in notices">
+        <!--<div style="left: 10px;" class="notice-label"><span class="notice-icon">FEMENINO</span></div>-->
+        <img class="card-img-top" ng-src="{{notice.FOTO}}">
+        <div class="card-body">
+          <h5 class="card-title" ng-click="showNoticia(notice.ID)">{{notice.TITULO}}</h5>
+          <p class="card-text">{{notice.RESUMEN}}</p>
+        </div>
+      </div>
+    </div>
+    <div style="text-align:center; margin: 1em 0em 0em 0em">
+    <button type="button" class="btn btn-danger" style="height:auto;" ng-click="showNoticias()">Ver más</button>
+    </div>
+</div>

@@ -1,0 +1,421 @@
+<ng-include src="'common/head.html'"></ng-include>
+<ng-include src="'common/slidebar.html'"></ng-include>
+<div class="container" id="main">
+  <!-- Alert -->
+  <div uib-alert ng-repeat="alert in alerts" ng-class="'alert-' + (alert.type)" dismiss-on-timeout='3000' close="closeAlert($index)">{{alert.msg}}</div>
+  <!-- start: page -->
+  <div class="card">
+    <div class="card-header">
+      <small>Configuración</small>
+    </div>
+    <div class="card-body">
+      <nav>
+        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+          <a ng-repeat="item in config" ng-class="{'nav-item': true, 'nav-link': true, 'active': isSet($index+1)}" id="nav-information-tab" data-toggle="tab" ng-click="setTab($index+1)" role="tab" aria-controls="nav-home" aria-selected="true">{{item.tab}}</a>
+        </div>
+      </nav>
+      <div class="tab-content">
+        <div ng-repeat="page in config" id="fundacion" ng-show="isSet($index+1)">
+          <div class="card border-top-0 rounded-0 rounded-bottom">
+            <div class="card-body">
+              <form>
+                <div class="form-row">
+                  <div class="form-group col-md-3">
+                    <label>Pestaña:</label>
+                    <input class="form-control form-control-sm" ng-model="page.tab"/>
+                  </div>
+                  <div class="form-group col-md-3">
+                    <label>Url:</label>
+                    <input disabled class="form-control form-control-sm" ng-model="page.url"/>
+                  </div>
+                  <div class="form-group col-md-3">
+                    <label>Categoria:</label>
+                      <select class="form-control form-control-sm" ng-model="page.categoria">
+                          <option value="">-- Elije una categoría --</option>
+                         <option ng-repeat="categoria in categorias" ng-value="categoria.NOMBRE">{{categoria.NOMBRE}}</option>
+                    </select>
+                  </div>
+                  </div>
+              </form>
+              <br />
+              <div class="card" ng-show = "sectionEnabled[$index]">
+                <div class="card-header">
+                  <small>Secciones</small><button type="button" class="btn btn-light btn-sm float-right collapsed" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">+</button>
+                </div>
+                <div class="card-body collapse" id="collapseOne">
+                  <nav>
+                    <div class="nav nav-tabs" id="nav-section" role="tablist">
+                      <a ng-repeat="cont in page.section" ng-class="{'nav-item': true, 'nav-link': true, 'active': isSecundarySet($index+1)}" id="nav-information-tab" data-toggle="tab" ng-click="setSecundaryTab($index+1)" role="tab" aria-controls="nav-home" aria-selected="true">{{cont.identificator}}</a>
+                      <a ng-class="{'nav-item': false, 'nav-link': true, 'active': false}" href ng-click="aniadirSeccionPage(page)" data-toggle="tab" role="tab" aria-controls="nav-home">+</a>
+                    </div>
+                  </nav>
+                  <div class="tab-content">
+                    <div ng-repeat="cont in page.section" id="fundacion" ng-show="isSecundarySet($index+1)">
+                      <div class="card border-top-0 rounded-0 rounded-bottom">
+                        <div class="card-body">
+                          <form>
+                            <div class="form-row">
+                              <div class="form-group col-md-3">
+                                <label class="label label-info">Tipo:</label>
+                                <select class="form-control form-control-sm" ng-model="cont.type">
+                                  <option value="" selected>Choose...</option>
+                                  <option value="T">Texto</option>
+                                  <option value="TS">Texto simple</option>
+                                  <option value="I">Imagen</option>
+                                  <option value="V">Videos</option>
+                                </select>
+                              </div>
+                            </div>
+                            <br/>
+                            <div class="card" ng-if="cont.type == 'I'">
+                              <div class="card-header">
+                                <small>Configuración de imagenes</small>
+                              </div>
+                              <div class="card-body">
+                                <div class="form-row">
+                                  <div class="form-group col-md-11">
+                                    <label class="label label-info">Url de la imagen:</label>
+                                    <input class="form-control form-control-sm" placeholder="Url de la imagen" ng-model="cont.areaMult.mult">
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="card" ng-if="cont.type == 'V'">
+                              <div class="card-header">
+                                <small>Configuración de video</small>
+                              </div>
+                              <div class="card-body">
+                                <div class="form-row">
+                                  <div class="form-group col-md-11">
+                                    <label class="label label-info">Url del video:</label>
+                                    <input class="form-control form-control-sm" placeholder="Url del video" ng-model="cont.areaMult.mult">
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="card" ng-if="cont.type == 'T'">
+                              <div class="card-header">
+                                <small>Configuración de texto</small>
+                              </div>
+                              <div class="card-body">
+                                <div class="form-row" style="text-align:center">
+                                  <div class="form-group col-md-3">
+                                    <img src ="assets/images/config/izquierda.png" style="width: 100%;"/>
+                                    <input type="radio" ng-model="cont.aline" value="L"> Ajustado a la izquierda
+                                  </div>
+                                  <div class="form-group col-md-3">
+                                    <img src ="assets/images/config/centro.png" style="width: 100%;"/>
+                                    <input type="radio" ng-model="cont.aline" value="C"> Ajustado en el centro
+                                  </div>
+                                  <div class="form-group col-md-3">
+                                    <img src ="assets/images/config/derecha.png" style="width: 100%;"/>
+                                    <input type="radio" ng-model="cont.aline" value="R"> Ajustado a la derecha
+                                  </div>
+                                  <div class="form-group col-md-3">
+                                    <img src ="assets/images/config/dos_texto.png" style="width: 100%;"/>
+                                    <input type="radio" ng-model="cont.aline" value="D"> Doble texto
+                                  </div>
+                                </div>
+                                <br/>
+                                <div class="form-row">
+                                  <div class="form-group col-md-6">
+                                    <label class="label label-info">Imagen de fondo:</label>
+                                    <input type="text" class="form-control form-control-sm" ng-model="cont.areaMult.mult" disabled>
+                                  </div>
+                                  <div class="form-group col-md-6">
+                                    <button  style = "position:relative; top:1.9em;" class="btn btn-warning btn-sm" tooltip title="Imagenes ya cargadas" data-toggle="modal" data-target="#myModal{{page.id}}-{{$index}}" ng-click="getImages()"><i class="far fa-images"></i></button>
+                                  </div>
+                                </div>
+                                <!-- Modal -->
+                                <div class="modal fade" id="myModal{{page.id}}-{{$index}}" role="dialog">
+                                  <div class="modal-dialog">
+                                    <!-- Modal content-->
+                                    <div class="modal-content">
+                                      <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        <h4 class="modal-title">Imagenes almacenadas en el servidor</h4>
+                                      </div>
+                                      <div class="modal-body">
+                                        <p style = "text-align:left;">Todas estás imagenes se encuentran en el directorio <code>assets/images/config/</code></p>
+                                        <div class="figure-img-server" ng-repeat="imagen in imagenes">
+                                          <img class="scaled" src="assets/images/config/{{imagen}}" >
+                                          <p>{{imagen}}</p>
+                                          <input name = "image" type="radio" ng-model="cont.areaMult.mult" value="assets/images/config/{{imagen}}">
+                                        </div>
+                                      </div>
+                                      <div class="modal-footer">
+                                        <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cerrar</button>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <br/>
+                                <div class="form-row">
+                                  <div class="form-group col-md-6" ng-if="cont.aline != 'D'">
+                                    <label class="label label-info">Titulo:</label>
+                                    <textarea class="form-control" placeholder="Texto" ng-model="cont.optional1.head"></textarea>
+                                  </div>
+                                  <div class="form-group col-md-6" ng-if="cont.aline == 'D'">
+                                    <label class="label label-info">Titulo izquierda:</label>
+                                    <textarea class="form-control" placeholder="Texto en el cuadro de la izquierda" ng-model="cont.optional1.head"></textarea>
+                                  </div>
+                                  <div class="form-group col-md-6" ng-if="cont.aline == 'D'">
+                                    <label class="label label-info">Titulo derecha:</label>
+                                    <textarea class="form-control" placeholder="Texto en el cuadro de la izquierda" ng-model="cont.optional2.head"></textarea>
+                                  </div>
+                                </div>
+                                <br/>
+                                <div class="form-row">
+                                  <div class="form-group col-md-6" ng-if="cont.aline != 'D'">
+                                    <label class="label label-info">Texto:</label>
+                                    <textarea class="form-control" placeholder="Texto" ng-model="cont.optional1.paragraph" rows="5"></textarea>
+                                  </div>
+                                  <div class="form-group col-md-6" ng-if="cont.aline == 'D'">
+                                    <label class="label label-info">Texto izquierda:</label>
+                                    <textarea class="form-control" placeholder="Texto en el cuadro de la izquierda" ng-model="cont.optional1.paragraph" rows="5"></textarea>
+                                  </div>
+                                  <div class="form-group col-md-6" ng-if="cont.aline == 'D'">
+                                    <label class="label label-info">Texto derecha:</label>
+                                    <textarea class="form-control" placeholder="Texto en el cuadro de la izquierda" ng-model="cont.optional2.paragraph" rows="5"></textarea>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="card" ng-if="cont.type == 'TS'">
+                              <div class="card-header">
+                                <small>Configuración de texto simple</small>
+                              </div>
+                              <div class="card-body">
+                                <div class="form-row">
+                                  <div class="form-group col-md-10">
+                                    <label class="label label-info">Titulo:</label>
+                                    <textarea class="form-control" placeholder="Texto" ng-model="cont.optional1.head"></textarea>
+                                  </div>
+                                </div>
+                                <div class="form-row">
+                                  <div class="form-group col-md-10">
+                                    <label class="label label-info">Texto:</label>
+                                    <textarea class="form-control" placeholder="Texto" ng-model="cont.optional1.paragraph" rows="5"></textarea>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <br ng-show = "sectionEnabled[$index] && subpageEnabled[$index]" />
+              <div class="card" ng-show = "subpageEnabled[$index]">
+                <div class="card-header">
+                  <small>Subcategorias</small><button type="button" class="btn btn-light btn-sm float-right collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">+</button>
+                </div>
+                <div class="card-body collapse" id="collapseTwo">
+                  <nav>
+                    <div class="nav nav-tabs" id="nav-section" role="tablist">
+                      <a ng-repeat="subpage in page.subpage" ng-class="{'nav-item': true, 'nav-link': true, 'active': isTerciarySet($index+1)}" id="nav-information-tab" data-toggle="tab" ng-click="setTerciaryTab($index+1)" role="tab" aria-controls="nav-home" aria-selected="true">{{subpage.tab}}</a>
+                    </div>
+                  </nav>
+                  <div class="tab-content">
+                    <div ng-repeat="subpage in page.subpage" id="fundacion" ng-show="isTerciarySet($index+1)">
+                      <div class="card border-top-0 rounded-0 rounded-bottom">
+                        <div class="card-body">
+                          <form>
+                            <div class="form-row">
+                              <div class="form-group col-md-3">
+                                <label class="label label-info">Pestaña:</label>
+                                <input class="form-control form-control-sm" placeholder="Nombre de la pestaña" ng-model="subpage.tab" />
+                              </div>
+                              <div class="form-group col-md-3">
+                                <label class="label label-info">Url:</label>
+                                <input ng-disabled = "true" class="form-control form-control-sm" placeholder="Url de la pestaña" ng-model="subpage.url" />
+                              </div>
+                              <div class="form-group col-md-3">
+                                <label class="label label-info">Categoria:</label>
+                                  <select class="form-control form-control-sm" ng-model="subpage.categoria">
+                                      <option value="" ng-selected="true">-- Elije una categoría --</option>
+                                     <option ng-repeat="categoria in categorias" ng-value="categoria.NOMBRE">{{categoria.NOMBRE}}</option>
+                                </select>
+                              </div>
+                            </div>
+                          </form>
+                            <br/>
+                          <nav>
+                            <div class="nav nav-tabs" id="nav-section" role="tablist">
+                              <a ng-repeat="contSub in subpage.section" ng-class="{'nav-item': true, 'nav-link': true, 'active': isCuaternarySet($index+1)}" id="nav-information-tab" data-toggle="tab" ng-click="setCuaternaryTab($index+1)" role="tab" aria-controls="nav-home" aria-selected="true">{{contSub.identificator}}</a>
+                              <a ng-class="{'nav-item': false, 'nav-link': true, 'active': false}" href ng-click="aniadirSeccionSubpage(subpage)" data-toggle="tab" role="tab" aria-controls="nav-home">+</a>
+                            </div>
+                          </nav>
+                          <div class="tab-content">
+                            <div ng-repeat="contSub in subpage.section" id="fundacion" ng-show="isCuaternarySet($index+1)">
+                              <div class="card border-top-0 rounded-0 rounded-bottom">
+                                <div class="card-body">
+                                  <form>
+                                    <div class="form-row">
+                                      <div class="form-group col-md-3">
+                                        <label class="label label-info">Tipo:</label>
+                                        <select class="form-control form-control-sm" ng-model="contSub.type">
+                                          <option value="" selected>Choose...</option>
+                                          <option value="T">Texto</option>
+                                          <option value="TS">Texto simple</option>
+                                          <option value="I">Imagen</option>
+                                          <option value="V">Videos</option>
+                                        </select>
+                                      </div>
+                                    </div>
+                                  </form>
+                                  <br/>
+                                  <div class="card" ng-if="contSub.type == 'I'">
+                                    <div class="card-header">
+                                      <small>Configuración de imagen</small>
+                                    </div>
+                                    <div class="card-body">
+                                      <div class="form-row">
+                                        <div class="form-group col-md-11">
+                                          <label class="label label-info">Url de la imagen:</label>
+                                          <input class="form-control form-control-sm" placeholder="Url de la imagen" ng-model="contSub.areaMult.mult">
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="card" ng-if="contSub.type == 'V'">
+                                    <div class="card-header">
+                                      <small>Configuración de video</small>
+                                    </div>
+                                    <div class="card-body">
+                                      <div class="form-row">
+                                        <div class="form-group col-md-11">
+                                          <label class="label label-info">Url del video:</label>
+                                          <input class="form-control form-control-sm" placeholder="Url del video" ng-model="contSub.areaMult.mult">
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="card" ng-if="contSub.type == 'T'">
+                                    <div class="card-header">
+                                      <small>Configuración de texto</small>
+                                    </div>
+                                    <div class="card-body">
+                                      <div class="form-row" style="text-align:center">
+                                        <div class="form-group col-md-3">
+                                          <img src ="assets/images/config/izquierda.png" style="width: 100%;"/>
+                                          <input type="radio" ng-model="contSub.aline" value="L"> Ajustado a la izquierda
+                                        </div>
+                                        <div class="form-group col-md-3">
+                                          <img src ="assets/images/config/centro.png" style="width: 100%;"/>
+                                          <input type="radio" ng-model="contSub.aline" value="C"> Ajustado en el centro
+                                        </div>
+                                        <div class="form-group col-md-3">
+                                          <img src ="assets/images/config/derecha.png" style="width: 100%;"/>
+                                          <input type="radio" ng-model="contSub.aline" value="R"> Ajustado a la derecha
+                                        </div>
+                                        <div class="form-group col-md-3">
+                                          <img src ="assets/images/config/dos_texto.png" style="width: 100%;"/>
+                                          <input type="radio" ng-model="contSub.aline" value="D"> Doble texto
+                                        </div>
+                                      </div>
+                                      <br/>
+                                      <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                          <label class="label label-info">Imagen de fondo:</label>
+                                          <input type="text" class="form-control form-control-sm" ng-model="contSub.areaMult.mult" disabled>
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                          <button style= "position:relative; top:1.9em;" class="btn btn-warning btn-sm" tooltip title="Imagenes ya cargadas" data-toggle="modal" data-target="#myModalSubpage{{subpage.id}}-{{$index}}" ng-click="getImages()"><i class="far fa-images"></i></button>
+                                        </div>
+                                      </div>
+                                      <!-- Modal -->
+                                      <div class="modal fade" id="myModalSubpage{{subpage.id}}-{{$index}}" role="dialog">
+                                        <div class="modal-dialog">
+                                          <!-- Modal content-->
+                                          <div class="modal-content">
+                                            <div class="modal-header">
+                                              <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                              <h4 class="modal-title">Imagenes almacenadas en el servidor</h4>
+                                            </div>
+                                            <div class="modal-body">
+                                              <p style = "text-align:left;">Todas estás imagenes se encuentran en el directorio <code>assets/images/config/</code></p>
+                                              <div class="figure-img-server" ng-repeat="imagen in imagenes">
+                                                <img class="scaled" src="assets/images/config/{{imagen}}" >
+                                                <p>{{imagen}}</p>
+                                                <input name = "imageSub" type="radio" ng-model="contSub.areaMult.mult" value="assets/images/config/{{imagen}}">
+                                              </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                              <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cerrar</button>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <br/>
+                                      <div class="form-row">
+                                        <div class="form-group col-md-6" ng-if="contSub.aline != 'D'">
+                                          <label class="label label-info">Titulo:</label>
+                                          <textarea class="form-control" placeholder="Texto" ng-model="contSub.optional1.head"></textarea>
+                                        </div>
+                                        <div class="form-group col-md-6" ng-if="contSub.aline == 'D'">
+                                          <label class="label label-info">Titulo izquierda:</label>
+                                          <textarea class="form-control" placeholder="Texto en el cuadro de la izquierda" ng-model="contSub.optional1.head"></textarea>
+                                        </div>
+                                        <div class="form-group col-md-6" ng-if="contSub.aline == 'D'">
+                                          <label class="label label-info">Titulo derecha:</label>
+                                          <textarea class="form-control" placeholder="Texto en el cuadro de la izquierda" ng-model="contSub.optional2.head"></textarea>
+                                        </div>
+                                      </div>
+                                      <br/>
+                                      <div class="form-row">
+                                        <div class="form-group col-md-6" ng-if="contSub.aline != 'D'">
+                                          <label class="label label-info">Texto:</label>
+                                          <textarea class="form-control" placeholder="Texto" ng-model="contSub.optional1.paragraph" rows="5"></textarea>
+                                        </div>
+                                        <div class="form-group col-md-6" ng-if="contSub.aline == 'D'">
+                                          <label class="label label-info">Texto izquierda:</label>
+                                          <textarea class="form-control" placeholder="Texto en el cuadro de la izquierda" ng-model="contSub.optional1.paragraph" rows="5"></textarea>
+                                        </div>
+                                        <div class="form-group col-md-6" ng-if="contSub.aline == 'D'">
+                                          <label class="label label-info">Texto derecha:</label>
+                                          <textarea class="form-control" placeholder="Texto en el cuadro de la izquierda" ng-model="contSub.optional2.paragraph" rows="5"></textarea>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="card" ng-if="contSub.type == 'TS'">
+                                    <div class="card-header">
+                                      <small>Configuración de texto simple</small>
+                                    </div>
+                                    <div class="card-body">
+                                      <div class="form-row">
+                                        <div class="form-group col-md-10">
+                                          <label class="label label-info">Titulo:</label>
+                                          <textarea class="form-control" placeholder="Texto" ng-model="contSub.optional1.head"></textarea>
+                                        </div>
+                                      </div>
+                                      <div class="form-row">
+                                        <div class="form-group col-md-10">
+                                          <label class="label label-info">Texto:</label>
+                                          <textarea class="form-control" placeholder="Texto" ng-model="contSub.optional1.paragraph" rows="5"></textarea>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <br />
+          <button style="display:block;"class="btn btn-success btn-sm mb-2 mx-auto" ng-click="save()"><i><small>GUARDAR</small></i></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

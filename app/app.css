@@ -1,6 +1,15 @@
 .alert {
-    position:fixed;
-    top: 8.5em; 
+    position: fixed!important;
+    top: 4.2rem; 
+    right: 0px; 
+    width: fit-content;
+    max-width: 40%;
+    z-index:9999; 
+    border-radius:0px
+}
+
+.alert-login {
+    position: fixed; 
     right: 0px; 
     width: 30%;
     z-index:9999; 
@@ -21,4 +30,18 @@ div.figure p {
 
 img.scaled {
   width: 100%;
+}
+
+div.figure-img-server {
+    margin: 0.5em;
+    padding: 0.5em;
+    display:inline-block;
+    width: 15%;
+}
+
+div.figure-img-server p {
+  text-align: center;
+  font-style: italic;
+  font-size: smaller;
+  text-indent: 0;
 }

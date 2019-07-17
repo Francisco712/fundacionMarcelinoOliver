@@ -1,113 +1,19 @@
-<div class="header-pu">
-	<div class="logo-pu">
-		<div class="content">
-			<span>Fundación Marcelino Oliver</span>
-			<img src="images/Logo.jpg" />
-			<span>En Metro y Medio Cabe Una Vida</span>
-		</div>
-	</div>
-	<ul class="menu">
-		<li><a href="#!/home">Fundación Marcelino Oliver</a></li>
-		<li><a href="#!/psicologo">Psicólogo</a>
-			<!--<ul class="submenu">
-				<li><a href="#">Submenu a</a></li>
-				<li><a href="#">Submenu b</a></li>
-			</ul>-->
-		</li>
-		<li class="active"><a href="#!/ciclismo-adaptado">Ciclismo adaptado</a>
-			<!--<ul class="submenu">
-				<li><a href="#">Submenu a</a></li>
-				<li><a href="#">Submenu b</a></li>
-			</ul>-->
-		</li>
-		<li><a href="#!/juridico">Jurídico</a>
-			<!--<ul class="submenu">
-				<li><a href="#">Submenu a</a></li>
-				<li><a href="#">Submenu b</a></li>
-				<li><a href="#">Submenu c</a></li>
-			</ul>-->
-		</li>
-		<li><a href="#!/noticias">Noticias</a></li>
-		<li><a href="http://b2bcyclingdistribuciones.com/">Tienda</a></li>
-	</ul>
-
-	<div class="container">
-	  <div id="myCarousel" class="carousel slide" data-ride="carousel">
-		<!-- Indicators -->
-		<ol class="carousel-indicators">
-		  <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-		  <li data-target="#myCarousel" data-slide-to="1"></li>
-		  <li data-target="#myCarousel" data-slide-to="2"></li>
-		</ol>
-
-		<!-- Wrapper for slides -->
-		<div class="carousel-inner">
-		  <div class="item active">
-			<img src="images/bici.jpg" alt="Los Angeles">
-			<div class="carousel-caption">
-			  <h3>Los Angeles</h3>
-			  <p>LA is always so much fun!</p>
-			</div>
-		  </div>
-
-		  <div class="item">
-			<img src="images/bici2.jpg" alt="Chicago">
-			<div class="carousel-caption">
-			  <h3>Chicago</h3>
-			  <p>Thank you, Chicago!</p>
-			</div>
-		  </div>
-		
-		  <div class="item">
-			<img src="images/bici3.jpg" alt="New York">
-			<div class="carousel-caption">
-			  <h3>New York</h3>
-			  <p>We love the Big Apple!</p>
-			</div>
-		  </div>
-	  
-		</div>
-
-		<!-- Left and right controls -->
-		<!-- <a class="left carousel-control" href="#myCarousel" data-slide="prev">
-		  <span class="glyphicon glyphicon-chevron-left"></span>
-		  <span class="sr-only">Previous</span>
-		</a>
-		<a class="right carousel-control" href="#myCarousel" data-slide="next">
-		  <span class="glyphicon glyphicon-chevron-right"></span>
-		  <span class="sr-only">Next</span>
-		</a> -->
-	  </div>
-	</div>
-
-	<div class="social">
-		<ul>
-			<li><a href="http://www.facebook.com/fundacionmarcelinooliver" target="_blank" class="icon-facebook"></a></li>
-			<li><a href="http://www.twitter.com/FundMarcelino" target="_blank" class="icon-twitter"></a></li>
-			<li><a href="http://www.instagram.com/fundacionmarcelinooliver" target="_blank" class="icon-instagram"></a></li>
-			<li><a href="http://www.youtube.com/fundacionmarcelinooliver" target="_blank" class="icon-youtube"></a></li>
-			<!--<li><a href="mailto:contacto@falconmasters.com" class="icon-mail"></a></li>-->
-			<li><a href="" class="icon-mail"></a></li>
-		</ul>
-	</div>
-</div>
-<div class="wrapper">
-	<h1 class="title">Noticias</h1>
-	<hr />
-    <div class="center" ng-repeat="items in noticias">
-    	<div class="row" ng-if="$even">
-           <div class="col-xs-6">     
-               <p><img class="image" src="{{noticias[$index].FOTO}}"/>
-               <span class="title">{{noticias[$index].TITULO}}</span><br/>
-               <span class="resumen">{{noticias[$index].RESUMEN}}</span>
-               </p>
+<link rel="stylesheet" href="assets/home/assets/css/main.css" />
+<section class="body">
+    <div ng-include="'common/head-public.html'"></div>
+    <div ng-include="'common/social.html'"></div>
+</section>
+<div class="notice-data">
+    <div class="footer-notice">
+        <h1 class="head-container">NOTICIAS</h1>
+        <hr/>
+        <div class="card-deck">
+          <div class="card" ng-repeat="notice in noticias">
+            <img class="card-img-top" ng-src="{{notice.FOTO}}">
+            <div class="card-body">
+              <h6 class="card-title" ng-click="showNoticia(notice.ID)">{{notice.TITULO}}</h6>
             </div>
-            <div class="col-xs-6">
-                <p><img class="image" src="{{noticias[$index+1].FOTO}}"/>
-                <span class="title">{{noticias[$index+1].TITULO}}</span><br/>
-                <span class="resumen">{{noticias[$index+1].RESUMEN}}</span>
-                </p>
-            </div>
-    	</div>
+          </div>
+        </div>
     </div>
 </div>

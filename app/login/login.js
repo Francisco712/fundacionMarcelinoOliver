@@ -11,21 +11,45 @@ angular
   });
 }])
 
-.controller('AdminCtrl', function($scope, $http, $location, $log, auth) {
+.controller('AdminCtrl', function($scope, $http, $location, $log, auth, licenses) {
+    
+    var alertType;
+    var alertText;
+    $scope.alerts = [];
     
     $scope.login = function()
     {
-        var page = 'login/login.php?user='+$scope.user+'&pass='+$scope.password;
-        $http.get(page)
-        .success(function(response, status) {
-            auth.login(response[0].USER, response[0].PASSWORD);
+        auth.findUser($scope.user, $scope.password).then(function(data){
+            if(data.length > 0){
+                licenses.findByPk(data[0].id).then(function(licensesUser){
+                    licenses.addLicenses(licensesUser);
+                    auth.login(data[0].id, data[0].nombre);
+                })
+            }else{
+                alertType = "danger";
+                alertText = "El usuario no existe o no está registrado";
+                showAlert();
+            }
         })
-        .error(function(err) {
-            $log.error(err);
-        })
-        
     }
     
+    /**
+    * Método para mostrar la alerta
+    */
+    var showAlert = function() {
+        $scope.alert =   {
+            type: alertType,
+            msg: alertText
+        };
+        $scope.alerts.push($scope.alert);
+    }
+    
+    /**
+    * Método para cerrar la alerta
+    */
+    $scope.closeAlert = function(index) {
+        $scope.alerts.splice(index, 1);
+    }
 });
 
 

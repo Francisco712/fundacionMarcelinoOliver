@@ -1,0 +1,44 @@
+<!-- start: sidebar -->
+<div class="nav-side-menu">
+    <div class="brand">Panel central</div>
+    <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
+    <div class="menu-list">
+        <ul id="menu-content" class="menu-content collapse out">
+            <li ng-show = "licenses.showUsers">
+                <a style = "display: block" href="#!/admin/users">
+                    <i class="fa fa-users fa-lg"></i> Usuarios
+                </a>
+            </li>
+            <li ng-show = "licenses.showNews">
+                <a style = "display: block" href="#!/admin/notices">
+                    <i class="far fa-newspaper fa-lg"></i> Noticias
+                </a>
+            </li>
+            <li>
+                <a style = "display: block" href="#!/admin/eventos">
+                    <i class="fas fa-calendar-alt fa-lg"></i>Eventos
+                </a>
+            </li>
+            <li data-toggle="collapse" data-target="#config" class="collapsed">
+                <a><i class="fa fa-cogs fa-lg"></i> Configuración <span class="arrow"></span></a>
+            </li>
+            <ul class="sub-menu collapse" id="config">
+                <li><a href="#!/admin/config">Pestañas</a></li>
+                <li><a href="#!/admin/partners">Partners</a></li>
+                <li><a href="#!/admin/testimonios">Testimonios</a></li>
+                <li><a href="#!/admin/categorias">Categorias</a></li>
+                <!-- <li><a href="#!/admin/home">Estructura BBDD</a></li> -->
+            </ul>
+            <li>
+                <a  style = "display: block" href="#!/admin/messages">
+                    <i class="fa fa-envelope fa-lg"></i> Mensajes
+                </a>
+            </li>
+            <li>
+                <a style = "display: block" href="#!/admin/help">
+                    <i class="fa fa-question-circle fa-lg"></i> Ayuda
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>

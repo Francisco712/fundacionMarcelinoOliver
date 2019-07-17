@@ -1,290 +1,202 @@
-
-/*
-*	Estilos principales del menu de navegación
-*/
-
-.menu, .menu ul {
-	list-style: none;
-	padding: 0;
-	margin: 0;
-}
-
-@media (min-width: 768px){
-	.menu {
-		padding-left: 0%;
-	}
-}
-
-@media (min-width: 992px){
-	.menu {
-		padding-left: 0%;
-	}
-}
-
-@media (min-width: 1200px){
-	.menu {
-		padding-left: 15%;
-	}
-}
-
-.menu {
-	height: auto;
+nav.navbar.fixed.navbar-expand-lg.navbar-light {
+    position: fixed;
     width: 100%;
-    display: inline-block;
-    background: -moz-linear-gradient(#292929, #252525);
-	background: -ms-linear-gradient(#292929, #252525);
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #292929), color-stop(100%, #252525));
-	background: -webkit-linear-gradient(#292929, #252525);
-	background: -o-linear-gradient(#292929, #252525);
-	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#292929', endColorstr='#252525');
-	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#292929', endColorstr='#252525')";
-	background: linear-gradient(#292929, #252525);
-	border-bottom: 2px solid #181818;
-	border-top: 2px solid #303030;
+    background: #FFF;
+    z-index: 10;
+    height: 4rem;
 }
 
-.menu ul li {
-	background: -moz-linear-gradient(#292929, #252525);
-	background: -ms-linear-gradient(#292929, #252525);
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #292929), color-stop(100%, #252525));
-	background: -webkit-linear-gradient(#292929, #252525);
-	background: -o-linear-gradient(#292929, #252525);
-	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#292929', endColorstr='#252525');
-	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#292929', endColorstr='#252525')";
-	background: linear-gradient(#292929, #252525);
-	border-bottom: 2px solid #181818;
-	border-top: 2px solid #303030;
-	min-width: 160px;
+@media (max-width: 767px) {
+    nav.navbar.fixed.navbar-expand-lg.navbar-light {
+        position: relative;
+    }
 }
 
-.menu > li {
-	display: block;
-	float: left;
-	position: relative;
+.navbar {
+    justify-content: flex-start!important;
 }
 
-.menu > li:first-child {
-	border-radius: 5px 0 0;
+.navbar-default .navbar-nav > li.dropdown:hover > a, 
+.navbar-default .navbar-nav > li.dropdown:hover > a:hover,
+.navbar-default .navbar-nav > li.dropdown:hover > a:focus {
+    background-color: rgb(231, 231, 231);
+    color: rgb(85, 85, 85);
 }
 
-.menu a {
-	border-left: 3px solid rgba(0, 0, 0, 0);
-	color: #808080;
-	display: block;
-	font-family: 'Lucida Console';
-	font-size: 13px;
-	line-height: 36px;
-	padding: 0 25px;
-	text-decoration: none;
-	text-transform: uppercase;
+li.dropdown:hover > .dropdown-menu {
+    display: block;
 }
-/************************************************************************************/
 
-/*
-*	Estilos principales de la acción hover (pasar el ratón por encima)
+/**
+* SideBar admin
 */
-
-.menu li:hover {
-	background-color: #1c1c1c;
-	background: -moz-linear-gradient(#1c1c1c, #1b1b1b);
-	background: -ms-linear-gradient(#1c1c1c, #1b1b1b);
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #1c1c1c), color-stop(100%, #1b1b1b));
-	background: -webkit-linear-gradient(#1c1c1c, #1b1b1b);
-	background: -o-linear-gradient(#1c1c1c, #1b1b1b);
-	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#1c1c1c', endColorstr='#1b1b1b');
-	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#1c1c1c', endColorstr='#1b1b1b')";
-	background: linear-gradient(#1c1c1c, #1b1b1b);
-	/*border-bottom: 2px solid #222222;
-	border-top: 2px solid #1B1B1B;*/
+.nav-side-menu {
+    font-size: 11px;
+    font-weight: 200;
+    background-color: #2e353d;
+    position: fixed;
+    top: 5.5em;
+    width: 190px;
+    height: 100%;
+    color: #e1ffff;
 }
 
-.menu li:hover > a {
-	border-left: 3px solid #C4302B;
-	border-radius: 5px 0 0 0;
-	color: #C4302B;
-}
-/************************************************************************************/
-
-/*
-*	Estilos principales de los submenus (si los hubiese)
-*/
-
-.submenu {
-	left: 0;
-	max-height: 0;
-	position: absolute;
-	top: 100%;
-	z-index: 0;
-	-webkit-perspective: 400px;
-	-moz-perspective: 400px;
-	-ms-perspective: 400px;
-	-o-perspective: 400px;
-	perspective: 400px;
+.nav-side-menu .brand {
+  background-color: #23282e;
+  line-height: 50px;
+  display: block;
+  text-align: center;
+  font-size: 14px;
 }
 
-.submenu li {
-	opacity: 0;
-	-webkit-transform: rotateY(90deg);
-	-moz-transform: rotateY(90deg);
-	-ms-transform: rotateY(90deg);
-	-o-transform: rotateY(90deg);
-	transform: rotateY(90deg);
-	-webkit-transition: opacity .4s, -webkit-transform .5s;
-	-moz-transition: opacity .4s, -moz-transform .5s;
-	-ms-transition: opacity .4s, -ms-transform .5s;
-	-o-transition: opacity .4s, -o-transform .5s;
-	transition: opacity .4s, transform .5s;
+.nav-side-menu .toggle-btn {
+  display: none;
 }
 
-.menu .submenu li:hover a {
-	border-left: 3px solid #454545;
-	border-radius: 0;
-	color: #ffffff;
+.nav-side-menu ul,
+.nav-side-menu li {
+  list-style: none;
+  padding: 0px;
+  margin: 0px;
+  line-height: 35px;
+  cursor: pointer;
 }
 
-.menu > li:hover .submenu, .menu > li:focus .submenu {
-	max-height: 2000px;
-	z-index: 10;
+.nav-side-menu ul .collapsed .arrow:before,
+.nav-side-menu li .collapsed .arrow:before {
+    /*font-family: FontAwesome;*/
+  font-family: 'Font Awesome 5 Free';
+  content: "\f078";
+  font-weight: 900;
+  display: inline-block;
+  padding-left: 10px;
+  padding-right: 10px;
+  vertical-align: middle;
+  float: right;
 }
 
-.menu > li:hover .submenu li, .menu > li:focus .submenu li {
-	opacity: 1;
-	-webkit-transform: none;
-	-moz-transform: none;
-	-ms-transform: none;
-	-o-transform: none;
-	transform: none;
+.nav-side-menu ul :not(collapsed) .arrow:before,
+.nav-side-menu li :not(collapsed) .arrow:before {
+  /*font-family: FontAwesome;*/
+  font-family: 'Font Awesome 5 Free';
+  content: "\f053";
+  font-weight: 900;
+  display: inline-block;
+  padding-left: 10px;
+  padding-right: 10px;
+  vertical-align: middle;
+  float: right;
 }
-/***************************************************************************/
-
-/* 
-*	Estilos principales para el retardo (efecto de transición)
-*/
-
-.menu li:hover .submenu li:nth-child(1) {
--webkit-transition-delay: 0s;
--moz-transition-delay: 0s;
--ms-transition-delay: 0s;
--o-transition-delay: 0s;
-transition-delay: 0s;
+.nav-side-menu ul .active,
+.nav-side-menu li .active {
+  border-left: 3px solid #d19b3d;
+  background-color: #4f5b69;
 }
-
-.menu li:hover .submenu li:nth-child(2) {
-	-webkit-transition-delay: 50ms;
-	-moz-transition-delay: 50ms;
-	-ms-transition-delay: 50ms;
-	-o-transition-delay: 50ms;
-	transition-delay: 50ms;
+.nav-side-menu ul .sub-menu li.active,
+.nav-side-menu li .sub-menu li.active {
+  color: #d19b3d;
 }
-
-.menu li:hover .submenu li:nth-child(3) {
-	-webkit-transition-delay: 100ms;
-	-moz-transition-delay: 100ms;
-	-ms-transition-delay: 100ms;
-	-o-transition-delay: 100ms;
-	transition-delay: 100ms;
+.nav-side-menu ul .sub-menu li.active a,
+.nav-side-menu li .sub-menu li.active a {
+  color: #d19b3d;
 }
-
-.menu li:hover .submenu li:nth-child(4) {
-	-webkit-transition-delay: 150ms;
-	-moz-transition-delay: 150ms;
-	-ms-transition-delay: 150ms;
-	-o-transition-delay: 150ms;
-	transition-delay: 150ms;
+.nav-side-menu ul .sub-menu li,
+.nav-side-menu li .sub-menu li {
+  background-color: #181c20;
+  border: none;
+  line-height: 28px;
+  border-bottom: 1px solid #23282e;
+  margin-left: 0px;
 }
-
-.menu li:hover .submenu li:nth-child(5) {
-	-webkit-transition-delay: 200ms;
-	-moz-transition-delay: 200ms;
-	-ms-transition-delay: 200ms;
-	-o-transition-delay: 200ms;
-	transition-delay: 200ms;
+.nav-side-menu ul .sub-menu li:hover,
+.nav-side-menu li .sub-menu li:hover {
+  background-color: #020203;
 }
-
-.menu li:hover .submenu li:nth-child(6) {
-	-webkit-transition-delay: 250ms;
-	-moz-transition-delay: 250ms;
-	-ms-transition-delay: 250ms;
-	-o-transition-delay: 250ms;
-	transition-delay: 250ms;
+.nav-side-menu ul .sub-menu li:before,
+.nav-side-menu li .sub-menu li:before {
+  font-family: 'Font Awesome 5 Free';
+  content: "\f111";
+  display: inline-block;
+  padding-left: 10px;
+  padding-right: 10px;
+  vertical-align: middle;
+  font-size: 0.5em;
 }
-
-.menu li:hover .submenu li:nth-child(7) {
-	-webkit-transition-delay: 300ms;
-	-moz-transition-delay: 300ms;
-	-ms-transition-delay: 300ms;
-	-o-transition-delay: 300ms;
-	transition-delay: 300ms;
+.nav-side-menu li {
+  padding-left: 0px;
+  border-left: 3px solid #2e353d;
+  border-bottom: 1px solid #23282e;
 }
-
-.menu li:hover .submenu li:nth-child(8) {
-	-webkit-transition-delay: 350ms;
-	-moz-transition-delay: 350ms;
-	-ms-transition-delay: 350ms;
-	-o-transition-delay: 350ms;
-	transition-delay: 350ms;
+.nav-side-menu li a {
+  text-decoration: none;
+  color: #e1ffff;
 }
-
-.submenu li:nth-child(1) {
-	-webkit-transition-delay: 350ms;
-	-moz-transition-delay: 350ms;
-	-ms-transition-delay: 350ms;
-	-o-transition-delay: 350ms;
-	transition-delay: 350ms;
+.nav-side-menu li a i {
+  padding-left: 10px;
+  width: 20px;
+  padding-right: 20px;
 }
-
-.submenu li:nth-child(2) {
-	-webkit-transition-delay: 300ms;
-	-moz-transition-delay: 300ms;
-	-ms-transition-delay: 300ms;
-	-o-transition-delay: 300ms;
-	transition-delay: 300ms;
+.nav-side-menu li:hover {
+  border-left: 3px solid #d19b3d;
+  background-color: #4f5b69;
+  -webkit-transition: all 1s ease;
+  -moz-transition: all 1s ease;
+  -o-transition: all 1s ease;
+  -ms-transition: all 1s ease;
+  transition: all 1s ease;
 }
-
-.submenu li:nth-child(3) {
-	-webkit-transition-delay: 250ms;
-	-moz-transition-delay: 250ms;
-	-ms-transition-delay: 250ms;
-	-o-transition-delay: 250ms;
-	transition-delay: 250ms;
+@media (max-width: 767px) {
+  .nav-side-menu {
+    position: relative;
+    width: 100%;
+    margin-bottom: 10px;
+    top: 0;
+  }
+  .nav-side-menu .toggle-btn {
+    display: block;
+    cursor: pointer;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    /*z-index: 10 !important;*/
+    padding: 3px;
+    background-color: #ffffff;
+    color: #000;
+    width: 40px;
+    text-align: center;
+  }
+  .brand {
+    text-align: left !important;
+    font-size: 22px;
+    padding-left: 20px;
+    line-height: 50px !important;
+  }
+    a.brand-head {
+        width: 20%
+    }
 }
-
-.submenu li:nth-child(4) {
-	-webkit-transition-delay: 200ms;
-	-moz-transition-delay: 200ms;
-	-ms-transition-delay: 200ms;
-	-o-transition-delay: 200ms;
-	transition-delay: 200ms;
+@media (min-width: 767px) {
+    a.brand-head {
+        width: 10%
+    }
 }
-
-.submenu li:nth-child(5) {
-	-webkit-transition-delay: 150ms;
-	-moz-transition-delay: 150ms;
-	-ms-transition-delay: 150ms;
-	-o-transition-delay: 150ms;
-	transition-delay: 150ms;
-}
-
-.submenu li:nth-child(6) {
-	-webkit-transition-delay: 100ms;
-	-moz-transition-delay: 100ms;
-	-ms-transition-delay: 100ms;
-	-o-transition-delay: 100ms;
-	transition-delay: 100ms;
+@media (min-width: 767px) {
+  .nav-side-menu .menu-list .menu-content {
+    display: block;
+  }
+  #main {
+    font-family: monospace;
+    /* margin-top: 5em; */
+    float: right;
+    top: 6rem;
+  }
 }
 
-.submenu li:nth-child(7) {
-	-webkit-transition-delay: 50ms;
-	-moz-transition-delay: 50ms;
-	-ms-transition-delay: 50ms;
-	-o-transition-delay: 50ms;
-	transition-delay: 50ms;
+.container {
+    position: relative;
 }
 
-.submenu li:nth-child(8) {
-	-webkit-transition-delay: 0s;
-	-moz-transition-delay: 0s;
-	-ms-transition-delay: 0s;
-	-o-transition-delay: 0s;
-	transition-delay: 0s;
+body {
+  margin: 0px;
+  padding: 0px;
 }

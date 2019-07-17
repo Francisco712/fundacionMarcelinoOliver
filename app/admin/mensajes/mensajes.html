@@ -1,0 +1,76 @@
+
+    <ng-include src="'common/head.html'"></ng-include>
+
+        <ng-include src="'common/slidebar.html'"></ng-include>
+        <div class="container" id="main">
+    <div class="row">
+        <div class="col-md-12">
+
+        <!-- start: page -->
+        <div class="row">
+            <!-- Contenido -->
+            <div class="col-xl-3 col-lg-3">
+                <section class="card">
+
+                    <div class="card-body panel-mensajes">
+                        <!--<div class="content-user">
+                            <ul ng-repeat="user in users" class="simple-user-list">
+                                <li>
+                                    <figure class="image rounded">
+                                       <img style ="width:35px;height:35px;" class="img-circle" src="{{ user.FOTO_PERFIL }}" />
+                                    </figure>
+                                    <span ng-click="getMSG(user.ID)" class="title">{{user.NOMBRE}}</span>
+                                </li>
+                            </ul>
+                        </div>-->
+                        <md-content>
+                            <md-list class="md-dense p-0" flex>
+                                <md-list-item ng-repeat="user in users" class="md-2-line p-0">
+                                  <img ng-src="{{ user.FOTO_PERFIL }}" class="md-avatar" style = "cursor: pointer;" />
+                                  <div class="md-list-item-text">
+                                    <h3 ng-click="getMSG(user.ID)" style = "cursor: pointer;">{{user.NOMBRE}}</h3>
+                                    <!--<p style = "text-align: justify;">{{ msg.CONTENIDO }}</p>
+                                    <p style = "text-align: right;">{{ msg.FECHA }}</p>-->
+                                  </div>
+                                  <!--<md-divider md-inset ng-if="!$last"></md-divider>-->
+                                </md-list-item>
+                            </md-list>
+                        </md-content>
+                    </div>
+
+                </section>
+            </div>
+            <div class="col-xl-9 col-lg-9">
+                <section class="card">
+                    <div class="card-body panel-mensajes">
+                        <div ng-if="selectedUser!==undefined" class="content-message">
+                            <md-content>
+                                <md-list class="md-dense p-0" flex>
+                                    <md-list-item ng-repeat="msg in msgs" class="md-2-line p-0">
+                                      <img ng-src="{{msg.FOTO_E}}" class="md-avatar" />
+                                      <div class="md-list-item-text">
+                                        <h3>{{ msg.NOMBRE_E }}</h3>
+                                        <p style = "text-align: justify;">{{ msg.CONTENIDO }}</p>
+                                        <p style = "text-align: right;">{{ msg.FECHA }}</p>
+                                      </div>
+                                      <md-divider md-inset ng-if="!$last"></md-divider>
+                                    </md-list-item>
+                                </md-list>
+                            </md-content>
+                            <!--<hr class="dotted short">-->
+                        </div>
+                        <div ng-if="selectedUser===undefined" class="content-message">
+                            <p>Pulsa sobre un usuario de la izquierda para iniciar el chat</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+        </div>
+    <div ng-show = "selectedUser" class="panel-send-message">
+        <textarea class="form-control ng-pristine ng-valid ng-empty ng-touched area-write-message" ng-model="mensaje" aria-invalid="false"></textarea>
+        <button class="btn btn-primary btn-sm button-send-message" ng-click="sendMSG()">Enviar</button>
+    </div>
+            </div>
+    </div>
+</div>

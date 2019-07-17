@@ -9,7 +9,15 @@ angular.module('myApp.adminHome', ['ngRoute'])
   });
 }])
 
-.controller('HomeCtrl', function($scope, $http, $filter, $log, $location, auth) {
+.controller('HomeCtrl', function($scope, $http, $filter, $log, $location, auth, licenses) {
+    
+    // Obtenemos el nombre del usuario logueado
+    $scope.name = auth.getName();
+    
+    // Obtenemos los permisos
+    licenses.getLicenses().then(function(data){
+        $scope.licenses = data;
+    })
     
     $scope.logout = function() {
 		auth.logout();

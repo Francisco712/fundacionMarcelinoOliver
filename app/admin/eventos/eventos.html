@@ -1,0 +1,212 @@
+<ng-include src="'common/head.html'"></ng-include>
+<ng-include src="'common/slidebar.html'"></ng-include>
+<div class="container" id="main">
+<!-- Alert -->
+<div uib-alert ng-repeat="alert in alerts" ng-class="'alert-' + (alert.type)" dismiss-on-timeout='3000' close="closeAlert($index)">{{alert.msg}}</div>
+<!-- start: page -->
+<div class="card">
+<div class="card-header">
+   <small>Eventos</small>
+</div>
+<div class="card-body" ng-show="!new">
+   <div class="form-inline">
+      <div class="form-group">
+         <input class="form-control form-control-sm mx-sm-3 mb-2" type="text" placeholder="Buscar evento" ng-model="filtro" />
+      </div>
+      <button class="btn btn-info btn-sm mb-2" ng-click="fnew()"><i><small>Nuevo evento</small></i></button>
+   </div>
+   <div class="card">
+      <div class="card-header">
+         <small>Lista de Eventos</small>
+      </div>
+      <div class="card-body">
+         <table class="table table-hover table-bordered">
+            <thead>
+               <tr>
+                  <th>Acción</th>
+                  <th>TITULO</th>
+                  <th>FECHA</th>
+               </tr>
+            </thead>
+            <tbody>
+               <tr ng-repeat="item in eventos.slice(((currentPage-1)*itemsPerPage), ((currentPage)*itemsPerPage)) | filter: filtro">
+                  <td>
+                     <button class="btn btn-info btn-sm" tooltip title="Ver evento" ng-click="ver(item)"><i class="fas fa-info-circle"></i></button>
+                     <button class="btn btn-danger btn-sm" tooltip title="Eliminar evento" ng-click="showConfirm($event, item)"><i class="fas fa-times-circle"></i></button>
+                  </td>
+                  <td>{{ item.TITULO }}</td>
+                  <td>{{ item.FECHA }}</td>
+               </tr>
+            </tbody>
+         </table>
+         Se están mostrando
+         <select style="width: 5em;display: initial;" class="form-control form-control-sm" ng-model="viewby" ng-change="setItemsPerPage(viewby)">
+            <option>3</option>
+            <option>5</option>
+            <option>10</option>
+            <option>20</option>
+            <option>30</option>
+            <option>40</option>
+            <option>50</option>
+         </select>
+         registros.
+         <ul uib-pagination boundary-links="true" total-items="totalItems" ng-model="currentPage" items-per-page="itemsPerPage" class="pagination-sm justify-content-center" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></ul>
+      </div>
+   </div>
+</div>
+<div class="card-body" ng-show="new">
+   <button class="btn btn-info btn-sm mb-2" tooltip title="Volver" ng-click="return()"><i class="fas fa-reply"></i></button>
+   <button class="btn btn-success btn-sm mb-2" tooltip title="Guardar evento" ng-click="save()" ng-disabled="disabled"><i class="far fa-save"></i></button>
+   <button class="btn btn-warning btn-sm mb-2" tooltip title="Subir imagen" data-toggle="modal" data-target="#CargarImagenes"><i class="fa fa-upload"></i></button>
+   <button class="btn btn-warning btn-sm mb-2 float-right" tooltip title="Modificar evento" ng-click="allowUpdate()"><i class="far fa-edit"></i></button>
+   <br />
+   <!-- Modal -->
+   <div class="modal fade" id="CargarImagenes" role="dialog">
+      <div class="modal-dialog modal-l" role="document">
+         <!-- Modal content-->
+         <div class="modal-content">
+            <div class="modal-header">
+               <h5 class="modal-title" id="exampleModalLabel">Almacenar imagenes en el servidor</h5>
+               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+               <span aria-hidden="true">&times;</span>
+               </button>
+            </div>
+            <div class="modal-body">
+               <div class="col-xm-6">
+                  <!--<h4><label class="label label-info">Imagen de la noticia:</label></h4>-->
+                  <input type="file" file-model="files" name="file-7-eventos" id="file-7-eventos" class="inputfile inputfile-7" />
+                  <label for="file-7-eventos">
+                     <span class="spaninputfile"></span>
+                     <strong>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="spaninputfile" width="20" height="17" viewBox="0 0 20 17">
+                           <path d="M10 0l-5.2 4.9h3.3v5.1h3.8v-5.1h3.3l-5.2-4.9zm9.3 11.5l-3.2-2.1h-2l3.4 2.6h-3.5c-.1 0-.2.1-.2.1l-.8 2.3h-6l-.8-2.2c-.1-.1-.1-.2-.2-.2h-3.6l3.4-2.6h-2l-3.2 2.1c-.4.3-.7 1-.6 1.5l.6 3.1c.1.5.7.9 1.2.9h16.3c.6 0 1.1-.4 1.3-.9l.6-3.1c.1-.5-.2-1.2-.7-1.5z"></path>
+                        </svg>
+                        Seleccionar archivo
+                     </strong>
+                  </label>
+               </div>
+               <div class="col-xm-6">
+                  <button class="btn btn-success btn-sm mb-2" tooltip title="Guardar patrocinador" ng-click="subirImagen()">Enviar</button>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+   <br />
+   <div class="card">
+      <div class="card-header">
+         <small>Creador de Eventos</small>
+      </div>
+      <div class="card-body">
+         <nav>
+            <div class="nav nav-tabs" id="nav-tab" role="tablist">
+               <a ng-class="{'nav-item': true, 'nav-link': true, 'active': isSet(1)}" id="nav-datos-tab" data-toggle="tab" ng-click="setTab(1)" role="tab" aria-controls="nav-home" aria-selected="true">Datos del evento</a>
+               <a ng-class="{'nav-item': true, 'nav-link': true, 'active': isSet(2)}" id="nav-participantes-tab" data-toggle="tab" ng-click="setTab(2)" role="tab" aria-controls="nav-profile" aria-selected="false">Participantes</a>
+            </div>
+         </nav>
+         <div class="tab-content" id="eventTabContent">
+            <div id="info_personal" ng-show="isSet(1)">
+               <div class="card border-top-0 rounded-0 rounded-bottom">
+                  <div class="card-body">
+                     <form>
+                        <div class="form-row">
+                           <div class="form-group col-md-1">
+                              <label class="label label-info">Código:</label>
+                              <input class="form-control form-control-sm" ng-model="event.CODIGO" rows="3" disabled/>
+                           </div>
+                           <div class="form-group col-md-8">
+                              <label class="label label-info">Titulo:</label>
+                              <input ng-disabled="disabled" class="form-control form-control-sm" placeholder="Titulo del evento" ng-model="event.TITULO" maxlength="200" />
+                           </div>
+                           <div class="form-group col-md-3">
+                              <label class="label label-info">Fecha:</label>
+                              <input type="datetime-local" ng-disabled="disabled" class="form-control form-control-sm" ng-model="event.FECHA" />
+                           </div>
+                        </div>
+                        <br/>
+                        <div class="form-row">
+                           <div class="form-group col-md-12">
+                              <label class="label label-info">Descripción:</label>
+                              <textarea ng-disabled="disabled" class="form-control form-control-sm" placeholder="Descripción del evento" ng-model="event.DESCRIPCION" maxlength="2000"></textarea>
+                           </div>
+                        </div>
+                        <br/>
+                        <div class="form-row">
+                           <div class="form-group col-md-4">
+                              <label class="label label-info">Imagen:</label>
+                              <input type="text" class="form-control form-control-sm" ng-model="event.FOTO" disabled>
+                           </div>
+                           <div class="form-group col-md-2">
+                              <button style="position:relative; top:1.9em;" class="btn btn-warning btn-sm" ng-disabled="disabled" tooltip title="Imagenes ya cargadas" data-toggle="modal" data-target="#myModal" ng-click="getImages()"><i class="far fa-images"></i></button>
+                           </div>
+                           <!-- Modal -->
+                           <div class="modal fade" id="myModal" role="dialog">
+                              <div class="modal-dialog modal-xl modal-dialog-scrollable" role="document">
+                                 <div class="modal-content">
+                                    <div class="modal-header">
+                                       <h5 class="modal-title" id="exampleModalScrollableTitle">Imagenes almacenadas en el servidor</h5>
+                                       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                       <span aria-hidden="true">&times;</span>
+                                       </button>
+                                    </div>
+                                    <div class="modal-body">
+                                       <p style="text-align:left;">Todas estás imagenes se encuentran en el directorio <code>assets/images/events/</code></p>
+                                       <div class="figure-img-server" ng-repeat="imagen in imagenes">
+                                          <img class="scaled" src="assets/images/events/{{imagen}}">
+                                          <p>{{imagen}}</p>
+                                          <input name="image" type="radio" ng-model="event.FOTO" value="assets/images/events/{{imagen}}">
+                                       </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                       <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cerrar</button>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="form-group col-md-6">
+                              <label class="label label-info">Lugar:</label>
+                              <input type="text" class="form-control form-control-sm" ng-disabled="disabled" ng-model="event.LUGAR" maxlength="50">
+                           </div>
+                        </div>
+                     </form>
+                  </div>
+               </div>
+            </div>
+            <div id="permisos" ng-show="isSet(2)">
+               <div class="card border-top-0 rounded-0 rounded-bottom">
+                  <div class="card-body">
+                     <form>
+                        <div class="form-row">
+                           <div class="form-group col-md-12">
+                              <p>Se han inscrito {{numeroParticipantes}} participantes en este evento.</p>
+                           </div>
+                        </div>
+                        <div class="form-row">
+                           <div class="form-group col-md-12">
+                              <div id="imprimir">
+                                 <table class="table table-hover table-bordered">
+                                    <thead>
+                                       <tr>
+                                          <th>DNI</th>
+                                          <th>NOMBRE</th>
+                                       </tr>
+                                    </thead>
+                                    <tbody>
+                                       <tr ng-repeat="part in participantes">
+                                          <td>{{ part.DNI }}</td>
+                                          <td>{{ part.NOMBRE }} {{ part.APELLIDOS }}</td>
+                                       </tr>
+                                    </tbody>
+                                 </table>
+                              </div>
+                              <button class="btn btn-warning btn-sm mb-2 float-right" ng-click="descargarPDF()" ng-disabled="!descargable" tooltip title="Descargar PDF"><i class="fa fa-file-pdf"></i></button>
+                           </div>
+                        </div>
+                     </form>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>

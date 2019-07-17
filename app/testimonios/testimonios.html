@@ -1,0 +1,20 @@
+<link rel="stylesheet" href="assets/home/assets/css/main.css" />
+<section class="body">
+   <!-- start: header -->
+    <div ng-include="'common/head-public.html'"></div>
+    <div ng-include="'common/social.html'"></div>
+    <div class="notice-data">
+        <div class="footer-notice">
+            <h1 class="head-container">TESTIMONIOS</h1>
+            <hr/>
+            <div class="card-deck">
+              <div class="card" ng-repeat="testimonio in testimonios">
+                <div class="card-body">
+                  <h5 class="card-text">{{testimonio.NOMBRE}}</h5>
+                  <p class="card-text">{{testimonio.CONTENIDO}}</p>
+                </div>
+              </div>
+            </div>
+        </div>
+    </div>
+</section>

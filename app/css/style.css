@@ -68,7 +68,7 @@
 
 .inputfile + label {
     max-width: 88%;
-    font-size: 1.25rem;
+    /*font-size: 1.25rem;*/
     font-weight: 700;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -111,7 +111,7 @@
 
 .inputfile-7 + label span,
 .inputfile-7 + label strong {
-    padding: 0.625rem 1.25rem;
+    padding: 0.75rem 1.25rem;
 }
 
 .inputfile-7 + label span {

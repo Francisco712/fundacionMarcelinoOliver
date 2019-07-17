@@ -1,0 +1,28 @@
+<link rel="stylesheet" href="assets/home/assets/css/main.css" />
+<section class="body">
+   <div ng-include="'common/head-public.html'"></div>
+    <div ng-include="'common/social.html'"></div>
+    <div class="notice-data">
+        <div class="footer-notice">
+    <h1 class="head-container">PARTNERS</h1>
+    <hr/>
+        <div ng-repeat="p in patrocinadores" class="partner">
+            <div style="position:relative;">
+                <div style="overflow:hidden;">
+                    <div style="width: 36%;float: left;text-align: left;line-height: 0;">
+                        <img style="max-width: 100%;height: auto;" ng-src="{{p.IMAGEN}}" width="300" height="145">
+                    </div>
+                    <div class="part-content">
+                        <h2 class="part-head"></h2>
+                        <div class="part-resu">
+                            {{p.RESUMEN}}
+                        </div>
+                        <a ng-href="{{p.URL}}" target="_blank" class="part-enla">Visita la web</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+</section>
+<div ng-include="'common/area_noticia.html'"></div>

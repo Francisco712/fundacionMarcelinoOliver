@@ -1,0 +1,62 @@
+   <div ng-repeat="section in config.section">
+      <div class="block-video-home" ng-if="section.type == 'V'">
+         <div class="video-wrapper">
+            <div class="overlay"></div>
+             <video id="video-home" autoplay="" loop="" muted="" onloadedmetadata="this.muted = true" class="bg-video">
+            <!--<video id="video-home" autoplay="" loop="" muted="" poster="assets/images/logo.png" class="bg-video">-->
+               <source ng-src="{{section.areaMult.mult}}" ng-data-src="assets/videos/Cover.mp4" type="video/mp4">
+            </video>
+         </div>
+      </div>
+       <div class="block-video-home" ng-if="section.type == 'I'">
+         <div class="imagen-wrapper">
+            <div class="overlay"></div>
+             <img ng-src="{{section.areaMult.mult}}" class="bg-video" />
+         </div>
+      </div>
+      <section ng-style="style[$index]" class="main style2 dark fullscreen" ng-if="section.type == 'T' && section.aline == 'C'">
+         <div class="content box style2 simple-box">
+            <header>
+               <h2>{{section.optional1.head}}</h2>
+            </header>
+            <div ng-bind-html="translate(section.optional1.paragraph)"></div>
+         </div>
+      </section>
+      <section ng-style="style[$index]" class="main style2 right dark fullscreen" ng-if="section.type == 'T' && section.aline == 'R'">
+         <div class="content box style2 simple-box">
+            <header>
+               <h2>{{section.optional1.head}}</h2>
+            </header>
+            <div ng-bind-html="translate(section.optional1.paragraph)"></div>
+         </div>
+      </section>
+       <section ng-style="style[$index]" class="main style2 left dark fullscreen" ng-if="section.type == 'T' && section.aline == 'L'">
+         <div class="content box style2 simple-box">
+            <header>
+               <h2>{{section.optional1.head}}</h2>
+            </header>
+            <div ng-bind-html="translate(section.optional1.paragraph)"></div>
+         </div>
+      </section>
+      <section ng-style="style[$index]" class="main style2 left dark fullscreen" ng-if="section.type == 'T' && section.aline == 'D'">
+         <div class="content box style2 double-box">
+            <header>
+               <h2>{{section.optional1.head}}</h2>
+            </header>
+             <div ng-bind-html="translate(section.optional1.paragraph)"></div>
+         </div>
+         <div class="content double-box">
+            <header>
+               <h2>{{section.optional2.head}}</h2>
+            </header>
+            <div ng-bind-html="translate(section.optional2.paragraph)"></div>
+         </div>
+      </section>
+       <section class="text" ng-if="section.type == 'TS'">
+            <h1 class="head-container">{{section.optional1.head}}</h1>
+            <div class="container">
+                <div ng-bind-html="translate(section.optional1.paragraph)"></div>
+            </div>
+        </section>
+      <!-- end: page -->
+   </div>

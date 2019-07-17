@@ -1,0 +1,26 @@
+<md-dialog class="dialogo" aria-label="Mango (Fruit)">
+  <form ng-cloak>
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>Vista previa de la noticia {{noticia.ID}}</h2>
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="cancel()">
+          <i class="fa fa-times" aria-label="true"></i>
+        </md-button>
+      </div>
+    </md-toolbar>
+
+    <md-dialog-content>
+        <div class="md-dialog-content">
+            <div class="wrapper">
+                <h1 class="title">Noticias</h1>
+                <hr />
+                <div class="description">
+                    <h2 class="title_Notice">{{noticia.TITULO}}</h2>
+                    <p ng-bind-html="noticia.CONTENIDO"></p>
+                </div>
+            </div>
+        </div>
+    </md-dialog-content>
+  </form>
+</md-dialog>

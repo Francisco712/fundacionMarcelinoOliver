@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+  <page>
+    <tab>Fundación</tab>
+    <url>/home</url>
+    <categoria>GENERAL</categoria>
+    <id>1</id>
+    <section>
+      <identificator>Sección 1</identificator>
+      <type>V</type>
+      <aline/>
+      <optional1>
+        <head/>
+        <paragraph/>
+      </optional1>
+      <optional2>
+        <head/>
+        <paragraph/>
+      </optional2>
+      <areaMult>
+        <mult>assets/videos/adelantamientos.mp4</mult>
+      </areaMult>
+    </section>
+    <section>
+      <identificator>Sección 2</identificator>
+      <type>TS</type>
+      <aline/>
+      <optional1>
+        <head>¿Quiénes somos?</head>
+        <paragraph>@p Somos una Fundación sin ánimo de lucro, la realización de sus fines de interés general que se detallan en sus estatutos. @!p @p OBJETIVO 1: Ayudar a las victimas del ciclismo en accidentes de tráfico, ayuda a los familiares en caso de muerte del ciclista en apoyo jurídico y psicológico. @!p @p 1.1 Promover el ciclismo adaptado y sus deportistas individuales... @!p @p 1.2 Apoyar al ciclismo base, para la practica y el fomento del mismo. @!p 1.3 Formación de equipos ciclistas de competición de varias categorías bases.@!p @p 1.4 Educación vial.</paragraph>
+      </optional1>
+      <optional2>
+        <head/>
+        <paragraph/>
+      </optional2>
+      <areaMult>
+        <mult/>
+      </areaMult>
+    </section>
+    <section>
+      <identificator>Sección 3</identificator>
+      <type>T</type>
+      <aline>R</aline>
+      <optional1>
+        <head>Misión</head>
+        <paragraph>@p Comprometidos con el apoyo, superación y adaptación de las victimas y familiares procedentes de accidentes de tráfico ciclistas, ofrecemos toda la protección y ayuda necesaria (psicología médica y jurídica) para superar las adversidades del accidentado, mejorando su calidad de vida. @!p @p Fomentamos y promovemos la práctica del ciclismo a través de la formación en valores deportivos y personales dsde las bases (escuelas de ciclismo, cadetes, junior, élites sub23, féminas, ciclismo adaptado)@!p @p Concienciamos a la sociedad española de la necesidad de precaución y respeto necesario a la hora de adelantar a un ciclista. @!p</paragraph>
+      </optional1>
+      <optional2>
+        <head/>
+        <paragraph/>
+      </optional2>
+      <areaMult>
+        <mult>assets/images/config/convivencia.jpg</mult>
+      </areaMult>
+    </section>
+    <section>
+      <identificator>Sección 4</identificator>
+      <type>T</type>
+      <aline>D</aline>
+      <optional1>
+        <head>Filosofía</head>
+        <paragraph>@pNuestra pasión por el ciclismo se traduce en transmitir los valores de este exigente deporte al día a día de las personas que tienen contacto con la fundación: dirección, trabajadores, deportistas y seguidores.@!p@pNuestros esfuerzos van dirigidos a que las víctimas superen sus adversidades, trabajando codo con codo cuantas veces sea necesario hasta alcanzarlo. Superación, trabajo en equipo y sacrificio son nuestros valores clave para alcanzar el éxito.@!p</paragraph>
+      </optional1>
+      <optional2>
+        <head>Visión</head>
+        <paragraph>@pAspiramos a conseguir un clima de ciclismo estable y seguro en toda España, reduciendo los accidentes de tráfico con ciclistas a un número anecdótico.@!p@pAportamos 100% de cobertura nacional de accidentes y una cobertura integral en cualquiera que sea la necesidad.@!p@pNotoriedad a nivel nacional en consecución de títulos, valores transmitidos en competición por nuestro equipo y marca de escuela refente en la Región de Murcia.@!p</paragraph>
+      </optional2>
+      <areaMult>
+        <mult>assets/images/config/Ciclismo.jpg</mult>
+      </areaMult>
+    </section>
+    <subpage>
+      <tab>Psicologica</tab>
+      <url>/elite-sub23</url>
+      <categoria>EQUIPO FEMENINO</categoria>
+      <id>1</id>
+      <section>
+        <identificator>Sección 1</identificator>
+        <type>TS</type>
+        <aline/>
+        <optional1>
+          <head>ATENCIÓN PSICOLÓGICA A ACCIDENTADOS DE TRÁFICO</head>
+          <paragraph>@pLa FUNDACIÓN MARCELINO OLIVER pone a su disposición un equipo de especialistas en materia psicológica para hacerse cargo del sufrimiento que provoca un accidente de tráfico.@!p@pEl objetivo es intervenir sobre las áreas psicológicas afectadas y potenciar aquellas que no se han visto perjudicadas para que las víctimas puedan continuar con su proyecto vital.@!p@pTan importantes son las secuelas físicas como las psicológicas tras sufrir un accidente de tráfico. La eficacia y la eficiencia en ambos casos son cruciales para una rápida recuperación.@!p@pConsecuencias del accidente como Transtorno de estrés postraumático, transtorno de ansiedad generalizada o transtorno adaptativo mixto son los más comunes y por ello hay que prestarles especial atención.@!p@p¡Podemos ayudarle! Llame al 602 21 20 85 y le ofreceremos asistencia. También puede cumplimentar el formulario de solicitud de información y uno de nuestros especialistas contactará con usted.@!p</paragraph>
+        </optional1>
+        <optional2>
+          <head/>
+          <paragraph/>
+        </optional2>
+        <areaMult>
+          <mult/>
+        </areaMult>
+      </section>
+    </subpage>
+    <subpage>
+      <tab>Juridico</tab>
+      <url>elite-sub23</url>
+      <categoria>PERSONAS</categoria>
+      <id>1</id>
+      <section>
+        <identificator>Sección 1</identificator>
+        <type>TS</type>
+        <aline/>
+        <optional1>
+          <head>INFORMACIÓN LEGAL DE UTILIDAD TRAS UN ACCIDENTE DE TRÁFICO</head>
+          <paragraph>@pLa FUNDACIÓN MARCELINO OLIVER le ofrece útil información legal sobre sus derechos como víctima de accidente de tráfico o familiar. ¡Que la burocracia no impida que su vida vuelva a ser como antes! Podemos orientarle y despejar el horizonte de su situación legal. Nos preocupa su salud física y su salud mental.@!p@pSi necesita orientación legal sobre qué hacer tras un accidente de tráfico en el que usted o su familia han resultado víctimas, contacte con la FUNDACIÓN MARCELINO OLIVER llamando al 602 21 20 85 o enviando un formulario de solicitud de información. Estaremos encantados de ayudarle.@!p</paragraph>
+        </optional1>
+        <optional2>
+          <head/>
+          <paragraph/>
+        </optional2>
+        <areaMult>
+          <mult/>
+        </areaMult>
+      </section>
+    </subpage>
+  </page>
+  <page>
+    <tab>Partners</tab>
+    <url>/partners</url>
+    <categoria/>
+    <id>2</id>
+  </page>
+  <page>
+    <tab>Colabora</tab>
+    <url>/colabora</url>
+    <categoria/>
+    <id>3</id>
+    <section>
+      <identificator>Sección 1</identificator>
+      <type>TS</type>
+      <aline/>
+      <optional1>
+        <head>COLABORADORES</head>
+        <paragraph>@p La aportación de recursos por parte de empresas, administraciones o personas particulares nos permite avanzar más rápidamente en la consecución de nuestros objetivos, Finalmente, los grandes beneficiados son los pacientes y, en general, la sociedad. @!p @p Ya existen empresas que colaboran con nosotros, sin cuyo apoyo nuestra labor sería mucho más complicada. Estas empresas o entidades públicass son: @!p @p Pero necesitamos muchos más colaboradores. @!p</paragraph>
+      </optional1>
+      <optional2>
+        <head/>
+        <paragraph/>
+      </optional2>
+      <areaMult>
+        <mult/>
+      </areaMult>
+    </section>
+    <section>
+      <identificator>Sección 2</identificator>
+      <type>TS</type>
+      <aline/>
+      <optional1>
+        <head>DONATIVOS</head>
+        <paragraph>@p Otra forma de colaborar con nosotros es la de realizar un donativo. Este donativo puede ser destinado para cumplir nuestros fines generales o para apoyar alguno de los programas de cooperación social que ya estamos desarrollando. @!p @p Su donativo tendrá beneficios fiscales y puede realizarlo ahora de forma telemática en la siguiente Cuenta Corriente: ES76 2100 1543 9902 0025 4509. También haciéndonos llegar un talón a la siguiente dirección postal: @!p @p Fundación Marcelino Oliver @!p @p C/Estación 27 @!p @p 30530 Cieza (Murcia) @!p @p Para poder recibir el correspondiente certificado de donación, se debe poner en el concepto del ingreso: NOMBRE, APELLIDOS, DIRECCIÓN COMPLETA Y NIF.</paragraph>
+      </optional1>
+      <optional2>
+        <head/>
+        <paragraph/>
+      </optional2>
+      <areaMult>
+        <mult/>
+      </areaMult>
+    </section>
+  </page>
+  <page>
+    <tab>Equipos</tab>
+    <url>/equipos</url>
+    <categoria>GENERAL</categoria>
+    <id>4</id>
+    <subpage>
+      <tab>Elite sub 23</tab>
+      <url>/elite-sub23</url>
+      <categoria>EQUIPO MASCULINO</categoria>
+      <id>4</id>
+      <section>
+        <identificator>Sección 1</identificator>
+        <type>TS</type>
+        <aline/>
+        <optional1>
+          <head>CICLISMO ADAPTADO</head>
+          <paragraph>@pLa FUNDACIÓN MARCELINO OLIVER puso en marcha este programa deportivo con personas discapacitadas.@!p@pPor ciclismo adaptado entendemos a todas y cada una de las diferentes formas que se pueden adaptar una bicicleta o triciclo para que una persona con algún tipo de discapacidad pueda realizar esta actividad con la mayor comodidad y autonomía posible.@!p@pNo hace falta llegar a las olimpiadas para que las personas con alguna discapacidad esperimenten múltiples beneficios.@!p@pDesde la FUNDACIÓN MARCELINO OLIVER ayudamos a los ciclistas que por, accidentes de tráfico u otra circunstancia quieran seguir prácticando su deporte favorito y así puedan conseguir sus metas como deportistas.@!p</paragraph>
+        </optional1>
+        <optional2>
+          <head/>
+          <paragraph/>
+        </optional2>
+        <areaMult>
+          <mult/>
+        </areaMult>
+      </section>
+    </subpage>
+    <subpage>
+      <tab>Ciclismo Adaptado</tab>
+      <url>/ciclismo-adaptado</url>
+      <categoria>GENERAL</categoria>
+      <id>4</id>
+      <section>
+        <identificator>Sección 1</identificator>
+        <type>TS</type>
+        <aline/>
+        <optional1>
+          <head>CICLISMO ADAPTADO</head>
+          <paragraph>@pLa FUNDACIÓN MARCELINO OLIVER puso en marcha este programa deportivo con personas discapacitadas.@!p@pPor ciclismo adaptado entendemos a todas y cada una de las diferentes formas que se pueden adaptar una bicicleta o triciclo para que una persona con algún tipo de discapacidad pueda realizar esta actividad con la mayor comodidad y autonomía posible.@!p@pNo hace falta llegar a las olimpiadas para que las personas con alguna discapacidad esperimenten múltiples beneficios.@!p@pDesde la FUNDACIÓN MARCELINO OLIVER ayudamos a los ciclistas que por, accidentes de tráfico u otra circunstancia quieran seguir prácticando su deporte favorito y así puedan conseguir sus metas como deportistas.@!p</paragraph>
+        </optional1>
+        <optional2>
+          <head/>
+          <paragraph/>
+        </optional2>
+        <areaMult>
+          <mult/>
+        </areaMult>
+      </section>
+      <section>
+        <identificator>Sección 2</identificator>
+        <type>T</type>
+        <aline>C</aline>
+        <optional1>
+          <head>CICLISMO ADAPTADO</head>
+          <paragraph>@pLa FUNDACIÓN MARCELINO OLIVER puso en marcha este programa deportivo con personas discapacitadas.@!p@pPor ciclismo adaptado entendemos a todas y cada una de las diferentes formas que se pueden adaptar una bicicleta o triciclo para que una persona con algún tipo de discapacidad pueda realizar esta actividad con la mayor comodidad y autonomía posible.@!p@pNo hace falta llegar a las olimpiadas para que las personas con alguna discapacidad esperimenten múltiples beneficios.@!p@pDesde la FUNDACIÓN MARCELINO OLIVER ayudamos a los ciclistas que por, accidentes de tráfico u otra circunstancia quieran seguir prácticando su deporte favorito y así puedan conseguir sus metas como deportistas.@!p</paragraph>
+        </optional1>
+        <optional2>
+          <head/>
+          <paragraph/>
+        </optional2>
+        <areaMult>
+          <mult>assets/images/config/CiclistaRuta.jpg</mult>
+        </areaMult>
+      </section>
+    </subpage>
+    <subpage>
+      <tab>Ciclismo femenino</tab>
+      <url>/ciclismo-femenino</url>
+      <categoria>EQUIPO FEMENINO</categoria>
+      <id>4</id>
+      <section>
+        <identificator>Sección 1</identificator>
+        <type>TS</type>
+        <aline/>
+        <optional1>
+          <head>CICLISMO ADAPTADO</head>
+          <paragraph>@pLa FUNDACIÓN MARCELINO OLIVER puso en marcha este programa deportivo con personas discapacitadas.@!p@pPor ciclismo adaptado entendemos a todas y cada una de las diferentes formas que se pueden adaptar una bicicleta o triciclo para que una persona con algún tipo de discapacidad pueda realizar esta actividad con la mayor comodidad y autonomía posible.@!p@pNo hace falta llegar a las olimpiadas para que las personas con alguna discapacidad esperimenten múltiples beneficios.@!p@pDesde la FUNDACIÓN MARCELINO OLIVER ayudamos a los ciclistas que por, accidentes de tráfico u otra circunstancia quieran seguir prácticando su deporte favorito y así puedan conseguir sus metas como deportistas.@!p</paragraph>
+        </optional1>
+        <optional2>
+          <head/>
+          <paragraph/>
+        </optional2>
+        <areaMult>
+          <mult/>
+        </areaMult>
+      </section>
+    </subpage>
+    <subpage>
+      <tab>Ciclismo base</tab>
+      <url>/ciclismo-base</url>
+      <categoria>PERSONAS</categoria>
+      <id>4</id>
+      <section>
+        <identificator>Sección 1</identificator>
+        <type>TS</type>
+        <aline/>
+        <optional1>
+          <head>CICLISMO ADAPTADO</head>
+          <paragraph>@pLa FUNDACIÓN MARCELINO OLIVER puso en marcha este programa deportivo con personas discapacitadas.@!p@pPor ciclismo adaptado entendemos a todas y cada una de las diferentes formas que se pueden adaptar una bicicleta o triciclo para que una persona con algún tipo de discapacidad pueda realizar esta actividad con la mayor comodidad y autonomía posible.@!p@pNo hace falta llegar a las olimpiadas para que las personas con alguna discapacidad esperimenten múltiples beneficios.@!p@pDesde la FUNDACIÓN MARCELINO OLIVER ayudamos a los ciclistas que por, accidentes de tráfico u otra circunstancia quieran seguir prácticando su deporte favorito y así puedan conseguir sus metas como deportistas.@!p</paragraph>
+        </optional1>
+        <optional2>
+          <head/>
+          <paragraph/>
+        </optional2>
+        <areaMult>
+          <mult/>
+        </areaMult>
+      </section>
+    </subpage>
+  </page>
+  <page>
+    <tab>Seguridad Vial</tab>
+    <url>/seguridad-vial</url>
+    <categoria/>
+    <id>9</id>
+    <subpage>
+      <tab>Ciclista</tab>
+      <url>/ciclista</url>
+      <categoria/>
+      <id>9</id>
+      <section>
+        <identificator>Sección 1</identificator>
+        <type>TS</type>
+        <aline/>
+        <optional1>
+          <head>10 CONSEJOS PARA CICLISTAS</head>
+          <paragraph>@p 1. Los ciclistas pueden circular por todas las carreteras exceptuando por autopistas. Si bien es cierto que se debe circular por las vías más seguras, es decir, con rectas, arcenes anchos,... y se deben evitar vías más peligrosas con poco arcén y muchas curvas.@!p @p 2. Es importante que la bicicleta esté en perfectas condiciones. Vigila los frenos, las luces sobre todo si vas a circular de noche, la presión de las ruedas, el sillín que siempre esté a una altura cómoda para el ciclista, ... @!p @p 3. Usar siempre casco homologado. La vulnerabilidad del ciclista es total y cuando subre una caida, en la mayoria de ocasiones su cabeza impacta contra el suelo por lo que un casco te puede salvar de tener lesiones cerebrales graves. @!p @p 4. Si vas a circular de noche, utiliza reflectante o elementos de iluminación que adviertan a los conductores de tu presencia. Y siempre utiliza una luz frontal, incluso pra circular de día. Una luz intermitente puede hacerte más visible para los conductores. @!p @p 5. Pueden circular en paralelo como máximo dos ciclistas y siempre y cuando no obstaculicen al resto, no haya mucho tráfico, la carretera tenga arcén y las condiciones climatológicas sean buenas. @!p @p Si circulas por vías urbanas utiliza siempre el carril bici en caso de que exista, sino permanece siempre a la derecha de la vía. @!p @p 7. Respeta las normas de circulación como el conductor de cualquier vehículo y señaliza bien tus movimientos o giros par aadvertir al resto. @!p @p 8. No circules con auriculares o hablando por teléfono ya que favorecen la falta de atención en la carretera. @!p @p 9. Procura vestir con colores llamativos y evita los oscuros pra hacerte visible en la carretera. @!p @p 10. Circula siempre en el mismo sentido que el tráfico, no al contrario.</paragraph>
+        </optional1>
+        <optional2>
+          <head/>
+          <paragraph/>
+        </optional2>
+        <areaMult>
+          <mult/>
+        </areaMult>
+      </section>
+    </subpage>
+    <subpage>
+      <tab>Conductor</tab>
+      <url>/conductor</url>
+      <categoria/>
+      <id>9</id>
+      <section>
+        <identificator>Sección 1</identificator>
+        <type>TS</type>
+        <aline/>
+        <optional1>
+          <head>10 CONSEJOS PARA CONDUCTORES</head>
+          <paragraph>@p 1. Cuando adelantes a un ciclista siempre deja 1.5 metros de distancia entre tu vehiculo y la bicicleta.@!p @p 2. Nunca adelantes si por el carril contrario circula de frente un ciclista. Desconoces qué movimientos puede realizar, cualquier giro puede ser fatal y ya en la maniobra de adelantamiento, no tendrás tiempo de reaccionar. @!p @p 3. Utiliza el claxon solo en situaciones de emergencia porque su sonido puede asustar al ciclista y provocar una caida. @!p @p 4. No adelantes a gran velocidad ya que el "rebufo" que puede generar podría desequilibrar al ciclista y provocar una caida. @!p @p 5. Señaliza bien tus movimientos con los intermitentes para que los ciclistas estén advertidos de tus giros, sobre todo en ciudad. @!p @p 6. Recuerda que si circulas por una vía con ciclistas, tienen prioridad. En una rotonda o un cruce, por ejemplo, debes dejarles pasar. @!p @p 7. Muchas precauciones en vías con visibilidad reducida por niebla y lluvia y más aún si hablamos de carreteras de montaña con muchas curvas y pendientes. @!p @p 8. Al estacionar, sobre todo en ciudad, ten cuidado a la hora de abrir la puerta para salir. Echa un vistazo por el espejo retrovisor antes de realizar cualquier acción. @!p @p 9. El vehículo siempre debe estar en perfectas condiciones y condiciones y con un mantenimiento adecuado. @!p @p 10. Sobre todo paciencia si el ciclista en algún momento dificulta tu marcha. En ciudad y en descensos prologados puede circular por el carril. No debemos perder los nervios nunca. @!p</paragraph>
+        </optional1>
+        <optional2>
+          <head/>
+          <paragraph/>
+        </optional2>
+        <areaMult>
+          <mult/>
+        </areaMult>
+      </section>
+    </subpage>
+  </page>
+  <page>
+    <tab>Testimonios</tab>
+    <url>/testimonios</url>
+    <categoria/>
+    <id>12</id>
+  </page>
+</config>

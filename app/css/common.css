@@ -1,10 +1,11 @@
-
+html {
+    background: white;
+}
 body {
-    background: url(../images/dark-texture-background.jpg);
-	position: absolute;
-    width: 100%;
     padding: 0;
     margin: 0;
+    font-size: 13px!important;
+    font-family: monospace!important;
 }
 
 .wraper hr {
@@ -22,6 +23,10 @@ body {
 	box-sizing: border-box;
 }
 
+ul {
+    list-style: none;
+}
+
 legend {
 	font-family: 'Kaushan Script';
 	font-size: 14px;
@@ -29,4 +34,42 @@ legend {
 
 li {
     text-align: left;
+    display: block;
+}
+
+.wrapper ul {
+    padding: 0px !important;
+}
+
+ol { 
+    counter-reset: item; 
+}
+
+ol>li:before { 
+    content: counters(item, ".") ".- "; 
+    counter-increment: item;
+    padding-right: 1em;
+}
+
+a.tab {
+    color: black;
+    margin: 0px 10px;
+    font-family: monospace;
+    font-size: 15px;
+    text-decoration: none;
+}
+a.tab:hover{
+	color: red;
+    margin: 0px 10px;
+    font-family: monospace;
+    font-size: 15px;
+    text-decoration: none;
+}
+
+div .enlace:hover{
+	box-shadow: 4px 4px 8px 0 rgba(0,0,0,0.1);
+}
+
+.btn {
+    font-family: monospace;
 }

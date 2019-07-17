@@ -1,184 +1,88 @@
-
-		<section class="body">
-
-			 <!-- start: header -->
-			<header class="header">
-				<div class="logo-container">
-					<a href="#!/admin/home" class="logo">
-						<img src="images/logo.png" height="35" alt="Fundación Marcelino Oliver" />
-					</a>
-					<div class="visible-xs toggle-sidebar-left" data-toggle-class="sidebar-left-opened" data-target="html" data-fire-event="sidebar-left-opened">
-						<i class="fa fa-bars" aria-label="Toggle sidebar"></i>
-					</div>
-				</div>
-			
-				<!-- start: search & user box -->
-				<div class="header-right">
-
-                    <span class="separator"></span>
-
-                    <div id="userbox" class="userbox">
-                        <a type="button" ng-click="logout()" class="mb-xs mt-xs mr-xs btn btn-primary">Logout</a>
-                    </div>
-                </div>
-				<!-- end: search & user box -->
-			</header>
-
-			<div class="inner-wrapper">
-                
-                 <aside id="sidebar-left" class="sidebar-left">
-				
-                    <div class="sidebar-header">
-                        <div class="sidebar-title">
-                            Navegación
-                        </div>
-                        <div class="sidebar-toggle hidden-xs" data-toggle-class="sidebar-left-collapsed" data-target="html" data-fire-event="sidebar-left-toggle">
-                            <i class="fa fa-bars" aria-label="Toggle sidebar"></i>
-                        </div>
-                    </div>
-
-                    <div class="nano has-scrollbar">
-                        <div class="nano-content">
-                            <nav id="menu" class="nav-main" role="navigation">
-                                <ul class="nav nav-main">
-                                    <li>
-                                        <a href="#!/admin/home">
-                                            <i class="fa fa-home" aria-hidden="true"></i>
-                                            <span>Inicio</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#!/admin/profile">
-                                            <i class="fa fa-user" aria-hidden="true"></i>
-                                            <span>Perfil</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#!/admin/noticias">
-                                            <i class="fa fa-newspaper-o" aria-hidden="true"></i>
-                                            <span>Noticias</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#!/admin/messages">
-                                            <i class="fa fa-envelope" aria-hidden="true"></i>
-                                            <span>Mensajes</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#!/admin/help">
-                                            <i class="fa fa-question-circle" aria-hidden="true"></i>
-                                            <span>Ayuda</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </nav>
-                        </div>
-                    </div>
-                </aside>
-				
-				<section role="main" class="content-body" ng-init="setTab(1)">
-					<header class="page-header">
-						<h2>Ayuda</h2>
-                        
-					</header>
-					
-					<div class="wrapper">
-                        <h1 class="title">Roles de usuario</h1>
-                        <hr />
-                        <ul class="help">
-                            <li><strong>Administrador:</strong> El usuario con el rol de administrador tendrá permisos para acceder a todas las
-                            funcionalidades de la aplicación. Las acciones que puede realizar este tipo de usuarios son:
-                                <ul>
-                                    <li>Creación de nuevos usuarios.</li>
-                                    <li>Modificación de usuarios.</li>
-                                    <li>Eliminación de usuarios.</li>
-                                    <li>Creación de nuevas noticias.</li>
-                                    <li>Modificación de noticias.</li>
-                                    <li>Eliminación de noticias.</li>
-                                    <li>Validar nuevas noticias.</li>
-                                    <li>Consulta de acciones realizadas por todos los usuarios.</li>
-                                    <li>Acceso a mensajes privados entre usuarios registrados en la aplicación</li>
-                                    <li>Acceso a la consulta de la ayuda de la aplicación.</li>
-                                </ul>
-                            </li>
-                            <br />
-                            <li><strong>Cooperador:</strong> El usuario con el rol de cooperador no tendrá todos los permisos y por lo tanto no podrá acceder a todas las funcionalidades de la aplicación. Las acciones que puede realizar este tipo de usuarios son:
-                                <ul>
-                                    <li>Creación de nuevas noticias.</li>
-                                    <li>Modificación de noticias.</li>
-                                    <li>Eliminación de noticias.</li>
-                                    <li>Acceso a mensajes privados entre usuarios registrados en la aplicación</li>
-                                    <li>Acceso a la consulta de la ayuda de la aplicación.</li>
-                                </ul>
-                            </li>
-                            <br />
-                            <li><strong>Ayudante:</strong> El usuario con el rol de ayudante no tendrá todos los permisos y por lo tanto no podrá acceder a todas las funcionalidades de la aplicación. Las acciones que puede realizar este tipo de usuarios son:
-                                <ul>
-                                    <li>Creación de nuevas noticias. Estas noticias tienen que ser validadas con anterioridad por un usuario tipo Administrador.</li>
-                                    <li>Modificación de noticias. Estos cambios tienen que ser validados con anterioridad por un usuario tipo Administrador.</li>
-                                    <li>Acceso a mensajes privados entre usuarios registrados en la aplicación</li>
-                                    <li>Acceso a la consulta de la ayuda de la aplicación.</li>
-                                </ul>
-                            </li>
-                        </ul>
-                        <h1 class="title">Noticias</h1>
-                        <hr />
-                        <p>La funcionalidad de esta parte de la aplicación es muy sencilla. En la <i>Figura 1</i>, podemos ver graficamente como está estructurada. A esta parte de la aplicación como hemos expuesto en el apartado "Roles de usuario" es accesible con todos los perfiles de usuario, aunque con peculiaridades que veremos a continuación.</p>
-                        
-                        <div class="figure">
-                            <p><img class="scaled" src="images/noticias.png" alt="Pestaña noticias"></p>
-                            <p>Figura 1</p>
-                        </div>
-                        <p>1.- Busqueda de noticia: </p>
-                            <ul class="help">
-                                <li>Caja de texto en la que podemos buscar cualquier noticia en la que encuentre coincidencia en las columnas <strong>Título</strong>, <strong>Resumen</strong> o <strong>Fecha</strong> (formato YYYY-MM-DD).Ej: Orihuela mostrará solamente la segunda fila.</li>
-                                <li>Botón "Nueva noticia": Este botón mostrará la ventana utilizada para crear una nueva noticia, creada y validada para los perfiles de usuario <strong>Administrador</strong> y <strong>Coordinador</strong> y creada y pendiente de validación para el caso del perfil de <strong>Ayudante</strong>.</li>
-                            </ul>
-                        <p>2.- Tabla de información, en esta tabla se muestra la mayor parte de la información relacionada con cada noticia. En la columna <strong>Título</strong> se muestra le Título relacionado con la noticia en cuestión y será el que se mostrará al usuario. En la columna <strong>Resumen</strong> se muestra el Resumen relacionado con la noticia en cuestion y será el que se mostrará al usuario. La columna <strong>Fecha</strong> se muestra la fecha en la que se creó la noticia en cuestión y será la que se mostrará al usuario.</p>
-                        <p>3.- Opciones de noticia: </p>
-                            <ul class="help">
-                                <li>Boton "i": Este botón muestra la información de la noticia de la que se quiere buscar información como es el título, el resumen y el contenido.</li>
-                                <li>Botón "x": Este botón elimina la noticia seleccionada por completo.</li>
-                            </ul>
-                    </div>
-				</section>
-			</div>
-
-			<aside id="sidebar-right" class="sidebar-right">
-				<div class="nano">
-					<div class="nano-content">
-						<a href="#" class="mobile-close visible-xs">
-							Collapse <i class="fa fa-chevron-right"></i>
-						</a>
-			
-						<div class="sidebar-right-wrapper">
-			
-			
-						</div>
-					</div>
-				</div>
-			</aside>
-		</section>
-
-		<!-- Vendor -->
-		<script src="assets/vendor/jquery/jquery.js"></script>
-		<script src="assets/vendor/jquery-browser-mobile/jquery.browser.mobile.js"></script>
-		<script src="assets/vendor/bootstrap/js/bootstrap.js"></script>
-		<script src="assets/vendor/nanoscroller/nanoscroller.js"></script>
-		<script src="assets/vendor/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
-		<script src="assets/vendor/magnific-popup/jquery.magnific-popup.js"></script>
-		<script src="assets/vendor/jquery-placeholder/jquery-placeholder.js"></script>
-		
-		<!-- Specific Page Vendor -->
-		<script src="assets/vendor/autosize/autosize.js"></script>
-		
-		<!-- Theme Base, Components and Settings -->
-		<script src="assets/javascripts/theme.js"></script>
-		
-		<!-- Theme Custom -->
-		<script src="assets/javascripts/theme.custom.js"></script>
-		
-		<!-- Theme Initialization Files -->
-		<script src="assets/javascripts/theme.init.js"></script>
-
+<ng-include src="'common/head.html'"></ng-include>
+<ng-include src="'common/slidebar.html'"></ng-include>
+<div class="container" id="main">
+   <div class="row">
+      <div class="col-md-12">
+         <div class="wrapper">
+            <div class="description">
+               <h1 class="title">INDICE</h1>
+               <ol>
+                  <li><a href="#!/admin/help/#Introduccion">Introducción</a></li>
+                  <li><a href="#!/admin/help/#Permisos">Permisos</a></li>
+                  <li>
+                     <a href="#!/admin/help/#Usuarios">Usuarios</a>
+                     <ol>
+                        <li>Consulta de perfil</li>
+                     </ol>
+                  </li>
+                  <li>
+                     <a href="#!/admin/help/#Notices">Noticias</a>
+                     <ol>
+                        <li>Creación de noticias</li>
+                        <li>Eliminación de noticias</li>
+                        <li>Modificación de noticias</li>
+                        <li>Validación de noticias</li>
+                     </ol>
+                  </li>
+                  <li><a href="#!/admin/help/#Config">Configuración</a></li>
+                  <li><a href="#!/admin/help/#Mensajes">Mensajes</a></li>
+               </ol>
+               <div id="Introduccion">
+                  <h1 class="title">Introducción</h1>
+                  <hr />
+                  <p>Este proyecto, que conformará la web oficial de la Fundación Marcelino Oliver se centrará en ayudar y proteger a las víctimas de los accidentes de tráfico mediante la prestación de servicios de información y de asesoramiento de índole legal, psicológica y medica entre otros. Para ello en las diferentes pestañas de esta web se encontrará la información necesaria o en su caso, la información de contacto para poder tratarse el asunto de una forma más personal. Además también se utilizará para distribuir y gestionar una serie de noticias, ya sean noticias sobre la propia Fundación o noticias de interes para el mundo del ciclismo.</p>
+                  <p>Bien, para un mejor entendimiento del funcionamiento de la página, se redacta a continuación detalladamente las funciones que hasta el momento están incluidas, en caso de que alguna funcionalidad no quede especialmente explicada siempre puede recurrir al desarrollador de la página para que le explique el caso concreto.</p>
+               </div>
+               <div id="Permisos">
+                  <h1 class="title">Permisos</h1>
+                  <hr />
+                  <p>Los permisos son autorizaciones para realizar ciertas acciones. Los permisos son modificables a nivel de usuario desde la pestaña "Usuarios". El unico que podrá modificar los permisos será el administrador de la web. Entre los permisos que están disponibles hasta el momento son los siguientes:</p>
+                  <div class="figure">
+                     <p><img class="scaled" src="assets/images/help/Permisos.png" alt="Permisos disponibles"></p>
+                     <p>Figura 1</p>
+                  </div>
+                  <p>En la <i>Figura 1</i> se pueden ver un ejemplo de permisos disponibles, los cuales se dividen en dos grupos: permisos sobre usuarios esto nos permitirá hacer o no acciones en la pestaña Usuarios y permisos sobre noticias que nos permitirán hacer acciones o no en la pestaña noticias. A continuación explicaremos detalladamente cada uno.</p>
+                  <li>
+                     <strong>Usuarios:</strong>
+                     <ol><i><strong>El usuario podrá acceder a la pestaña Usuarios</strong></i>: Si este permisos está marcado, el usuario tiene acceso a la pestaña "Usuarios" del panel izquierdo (<img  style="height:2em;" src="assets/images/help/Pusuarios.png" alt="Pestaña usuarios">), en caso de no estár marcado no aparecerá el icono.</ol>
+                     <ol><i><strong>El usuario podrá crear nuevos usuarios</strong></i>: Si este permisos está marcado, el usuario puede crear nuevos usuarios, siendo visible el botón "Nuevo Usuario" (<img style="height:2em;" src="assets/images/help/Nuevo_Usuario.png" alt="Nuevo usuario">), en caso de no estár marcado no aparecerá.</ol>
+                     <ol><i><strong>El usuario podrá modificar los usuarios existentes</strong></i>: Si este permiso está marcado, el usuario puede modificar el usuario seleccionado, estando habilitado el botón correspondiente (<img style="height:2em;" src="assets/images/help/Guardar.png" alt="Actualizar un usuario">), en caso de no estár marcado, el botón estará deshabilitado.</ol>
+                     <ol><i><strong>El usuario podrá eliminar los usuarios existentes</strong></i>: Si este permiso está marcado, el usuario puede eliminar el usuario seleccionado, habilitando el botón correspondiente (<img style="height:2em;" src="assets/images/help/Eliminar.png" alt="Eliminar un usuario">), en caso de no estár marcado, el botón no aparecerás.</ol>
+                  </li>
+                  <li>
+                     <strong>Noticias:</strong>
+                     <ol><i><strong>El usuario podrá acceder a la pestaña Noticias</strong></i>: Si este permisos está marcado, el usuario tiene acceso a la pestaña "Noticias" del panel izquierdo (<img  style="height:2em;" src="assets/images/help/Pusuarios.png" alt="Pestaña usuarios">), en caso de no estár marcado no aparecerá el icono.</ol>
+                     <ol><i><strong>El usuario podrá crear nuevas noticias</strong></i>: Si este permisos está marcado, el usuario puede crear nuevas noticias, siendo visible el botón "Nueva Noticia" (<img style="height:2em;" src="assets/images/help/Nuevo_Usuario.png" alt="Nuevo usuario">), en caso de no estár marcado no aparecerá.</ol>
+                     <ol><i><strong>El usuario podrá modificar las noticias existentes</strong></i>: Si este permiso está marcado, el usuario puede modificar la noticia seleccionada, habilitando el botón correspondiente (<img style="height:2em;" src="assets/images/help/Guardar.png" alt="Actualizar un usuario">), en caso de no estár marcado, el botón estará deshabilitado.</ol>
+                     <ol><i><strong>El usuario podrá eliminar las noticias existentes</strong></i>: Si este permiso está marcado, el usuario puede eliminar la noticia seleccionada, habilitando el botón correspondiente (<img style="height:2em;" src="assets/images/help/Eliminar.png" alt="Eliminar un usuario">), en caso de no estár marcado, el botón no aparecerás.</ol>
+                  </li>
+               </div>
+               <div id="Usuarios">
+                  <h1 class="title">Usuarios</h1>
+                  <hr />
+               </div>
+               <div id="Notices">
+                  <h1 class="title">Noticias</h1>
+                  <hr />
+                  <p>La funcionalidad de esta parte de la aplicación es muy sencilla. En la <i>Figura 1</i>, podemos ver graficamente como está estructurada. A esta parte de la aplicación como hemos expuesto en el apartado "Roles de usuario" es accesible con todos los perfiles de usuario, aunque con peculiaridades que veremos a continuación.</p>
+                  <div class="figure">
+                     <p><img class="scaled" src="assets/images/help/noticias.png" alt="Gestión de noticias"></p>
+                     <p>Figura 2</p>
+                  </div>
+               </div>
+               <div id="Config">
+                  <h1 class="title">Configuración</h1>
+                  <hr />
+               </div>
+               <div id="Mensajes">
+                  <h1 class="title">Mensajes</h1>
+                  <hr />
+               </div>
+            </div>
+            <!--<label>Sprint name:</label> <div click-to-edit type="inputText" ng-model="sprintName"></div>
+               <br/>
+               <label>Sprint desc:</label> <div click-to-edit type="inputText" ng-model="sprintDesc"></div>-->
+         </div>
+      </div>
+   </div>
+</div>

@@ -1,0 +1,89 @@
+<ng-include src="'common/head.html'"></ng-include>
+<ng-include src="'common/slidebar.html'"></ng-include>
+<div class="container" id="main">
+   <!-- Alert 
+      <alert-message alertM="alertMessage"></alert-message>-->
+   <div uib-alert ng-repeat="alert in alerts" ng-class="'alert-' + (alert.type)" dismiss-on-timeout='3000' close="closeAlert($index)">{{alert.msg}}</div>
+   <!-- start: page -->
+   <div class="card">
+      <div class="card-header"><small>Testimonios</small></div>
+      <div class="card-body" ng-show="!new">
+         <div class="form-inline">
+            <div class="form-group">
+               <input class="form-control form-control-sm mx-sm-3 mb-2" type="text" placeholder="Buscar testimonio" ng-model="filtro" />
+            </div>
+            <button class="btn btn-info btn-sm mb-2" ng-click="fnew()"><i><small>Nuevo testimonio</small></i></button>
+         </div>
+         <div class="card">
+            <div class="card-header"><small>Lista de testimonios</small></div>
+            <div class="card-body">
+               <table class="table table-hover table-bordered">
+                  <thead>
+                     <tr>
+                        <th>Acción</th>
+                        <th>Nombre</th>
+                        <th>Fecha</th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <tr ng-repeat="item in testimonios.slice(((currentPage-1)*itemsPerPage), ((currentPage)*itemsPerPage)) | filter: filtro">
+                        <td>
+                           <button class="btn btn-info btn-sm" tooltip title="Ver testimonio" ng-click="ver(item)"><i class="fas fa-info-circle"></i></button>
+                           <button class="btn btn-danger btn-sm" tooltip title="Eliminar testimonio" ng-click="showConfirm($event, item)"><i class="fas fa-times-circle"></i></button>
+                        </td>
+                        <td>{{ item.NOMBRE }}</td>
+                        <td>{{ item.FECHA }}</td>
+                     </tr>
+                  </tbody>
+               </table>
+               Se están mostrando 
+               <select style= "width: 5em;display: initial;" class= "form-control form-control-sm" ng-model="viewby" ng-change="setItemsPerPage(viewby)">
+                  <option>3</option>
+                  <option>5</option>
+                  <option>10</option>
+                  <option>20</option>
+                  <option>30</option>
+                  <option>40</option>
+                  <option>50</option>
+               </select>
+               registros.
+               <ul uib-pagination boundary-links="true" total-items="totalItems" ng-model="currentPage" items-per-page="itemsPerPage" class="pagination-sm justify-content-center" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></ul>
+            </div>
+         </div>
+      </div>
+      <div class="card-body" ng-show="new">
+         <button class="btn btn-info btn-sm mb-2" tooltip title="Volver" ng-click="return()"><i class="fas fa-reply"></i></button>
+         <button class="btn btn-success btn-sm mb-2" tooltip title="Guardar testimonio" ng-click="save()"><i class="far fa-save"></i></button>
+         <div class="card">
+            <div class="card-header"><small>Creador de testimonios</small></div>
+            <div class="card-body">
+                <form>
+               <div class="form-row">
+                  <div class="form-group col-md-1">
+                     <label class="label label-info">Id:</label>
+                     <input type="text" class="form-control form-control-sm" ng-model="testimonio.ID" disabled/>
+                  </div>
+                  <div class="form-group col-md-8">
+                     <label class="label label-info">Nombre:</label>
+                     <input type="text" class="form-control form-control-sm" placeholder="Introduce aquí el nombre..." ng-model="testimonio.NOMBRE" maxlength="20" />
+                     <br />
+                  </div>
+                  <div class="form-group col-md-3">
+                     <label class="label label-info">Fecha:</label>
+                     <input type = "datetime-local" class="form-control form-control-sm" ng-model="testimonio.FECHA" disabled />
+                  </div>
+               </div>
+               <br />
+               <div class="form-row">
+                  <div class="form-group col-md-12">
+                     <label class="label label-info">Contenido:</label>
+                     <textarea class="form-control" placeholder="Introduce aquí el contenido del testimonio..." ng-model="testimonio.CONTENIDO" maxlength="2000" rows="3"></textarea>
+                     <br />
+                  </div>
+               </div>
+                </form>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>

@@ -1,0 +1,22 @@
+<link rel="stylesheet" href="assets/home/assets/css/main.css" />
+<section class="body">
+   <!-- start: header -->
+   <div ng-include="'common/head-public.html'"></div>
+   <!-- end: header -->
+   <div class="inner-wrapper" style="padding-top:0px;">
+       <section class="text">
+            <h1 class="head-container">{{noticia.TITULO}}</h1>
+            <div class="container">
+                <div ng-bind-html="noticia.CONTENIDO"></div>
+            </div>
+           <br/>
+           <p ng-if="categorias.length > 0">Categorias: </p>
+           <ul class="list-inline">
+               <li class="list-inline-item notice-label" ng-repeat="categoria in categorias"><span class="notice-icon">{{categoria.NOMBRE}}</span></li>
+            </ul>
+           <!--<div style="right: 10px;" class="notice-label"><span class="notice-icon">FEMENINO</span></div>-->
+        </section>
+      <!-- end: page -->
+    </div>
+   <div ng-include="'common/social.html'"></div>
+</section>

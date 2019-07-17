@@ -1,0 +1,33 @@
+<nav class="navbar navbar-expand-lg navbar-light" style="margin:0;border-bottom: 1px solid rgba(0,0,0,.1);font-family: monospace;">
+  <a class="brand-head" ng-href="#!/home/0"><img style = "width: 100%;" class="navbar-brand" src="assets/images/logo.png"/></a>
+  <button style="left:50%;" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul style="margin: auto;" class="navbar-nav mr-auto">
+        <div ng-repeat="page in tabs">
+            <li class="nav-item" ng-if ="page.subpage.length == '0'">
+                <a class="nav-link" ng-href="#!{{page.url}}/{{$index}}">{{page.tab}}</a>
+            </li>
+            <li class="nav-item dropdown" ng-if ="page.subpage.length > '0'">
+                <a ng-if = "page.section.length == '0'" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{page.tab}}</a>
+                <a ng-if = "page.section.length > '0'" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" ng-href="#!{{page.url}}/{{$index}}">{{page.tab}}</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a ng-repeat="subpage in page.subpage" class="dropdown-item" ng-href="#!{{subpage.url}}/{{$parent.$index}}/{{$index}}">{{subpage.tab}}</a>
+                </div>
+            </li>
+        </div>
+        <div>
+            <li class="nav-item">
+                <a class="nav-link" ng-href="#!/eventos">Eventos</a>
+            </li>
+        </div>
+        <div>
+            <li class="nav-item">
+                <a class="nav-link" ng-href="#!/noticias">Noticias</a>
+            </li>
+        </div>
+    </ul>
+  </div>
+</nav>

@@ -1,25 +1,28 @@
 <?php
 
-$db_host="127.0.0.1:3306";
-$db_name="fmoliver";
-$db_connection = mysqli_connect($db_host, "root", "root", $db_name);
+include '../../common/connectBbdd.php';
 
-$archivo = (isset($_FILES['file'])) ? $_FILES['file'] : null;
+/*$archivo = (isset($_FILES['file'])) ? $_FILES['file'] : null;
+$ruta = "";
 
 if($archivo){
-    if(move_uploaded_file($_FILES['file']['tmp_name'], '..\..\assets\images\news\\'.$_FILES['file']['name'])){
+    $res = move_uploaded_file($_FILES['file']['tmp_name'], '../../assets/images/news/'.$_FILES['file']['name']);
+    if($res){
         $ruta = "assets/images/news/".$_FILES['file']['name'];
-    }else{
-        $ruta = "";
     }
-}else{
-    $ruta = "";
-}
+}*/
 
-$fecha = strftime("%Y-%m-%d", time());
+$id = utf8_decode($_POST['id']);
+$title = utf8_decode($_POST['title']);
+$content = utf8_decode($_POST['content']);
+$photo = utf8_decode($_POST['photo']);
 
-$resultado = mysqli_query($db_connection,"INSERT INTO tpw_noticias (TITULO, CONTENIDO, FECHA, RESUMEN, FOTO) VALUES ('".utf8_decode($_POST['title'])."', '".utf8_decode($_POST['content'])."', '".$fecha."', '".utf8_decode($_POST['summary'])."', '".$ruta."')");
+$stmt = $db_connection->prepare("INSERT INTO noticias (ID_USUARIO, TITULO, CONTENIDO, FOTO) VALUES (?, ?, ?, ?)");
+$stmt->bind_param("isss", $id, $title, $content, $photo);
 
-echo json_encode($resultado);
+$result = $stmt->execute();
+$lastId = $stmt->insert_id;
+$d = array('op' => $result, 'id' => $lastId);
+echo json_encode($d);
 
 ?>

@@ -1,0 +1,189 @@
+<ng-include src="'common/head.html'"></ng-include>
+<ng-include src="'common/slidebar.html'"></ng-include>
+<div class="container" id="main">
+   <!-- Alert -->
+   <div uib-alert ng-repeat="alert in alerts" ng-class="'alert-' + (alert.type)" dismiss-on-timeout='3000' close="closeAlert($index)">{{alert.msg}}</div>
+   <!-- start: page -->
+   <div class="card">
+      <div class="card-header">
+         <small>Usuarios</small>
+      </div>
+      <div class="card-body" ng-show="!new">
+         <div class="form-inline">
+            <div class="form-group">
+               <input class = "form-control form-control-sm mx-sm-3 mb-2" type="text" placeholder="Buscar usuario" ng-model = "filtro" />
+            </div>
+            <button ng-show = "licenses.createUsers" class="btn btn-info btn-sm mb-2" ng-click="fnew()" ><i><small>Nuevo usuario</small></i></button>
+         </div>
+         <div class="card">
+            <div class="card-header">
+               <small>Lista de usuarios</small>
+            </div>
+            <div class="card-body">
+               <table class="table table-hover table-bordered">
+                  <thead>
+                     <tr>
+                        <th>Acción</th>
+                        <th>Nombre</th>
+                        <th>Apellidos</th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <tr ng-repeat="item in usuarios.slice(((currentPage-1)*itemsPerPage), ((currentPage)*itemsPerPage)) | filter: filtro">
+                        <td>
+                           <button class="btn btn-info btn-sm" tooltip title="Ver usuario" ng-click="ver(item)"><i class="fas fa-info-circle"></i></button>
+                           <button ng-show = "licenses.deleteUsers" class="btn btn-danger btn-sm" tooltip title="Eliminar usuario" ng-click="showConfirm($event, item)"><i class="fas fa-times-circle"></i></button>
+                        </td>
+                        <td>{{ item.nombre }}</td>
+                        <td>{{ item.apellidos }}</td>
+                     </tr>
+                  </tbody>
+               </table>
+               Se están mostrando 
+               <select style= "width: 5em;display: initial;" class= "form-control form-control-sm" ng-model="viewby" ng-change="setItemsPerPage(viewby)">
+                  <option>3</option>
+                  <option>5</option>
+                  <option>10</option>
+                  <option>20</option>
+                  <option>30</option>
+                  <option>40</option>
+                  <option>50</option>
+               </select>
+               registros.
+               <ul uib-pagination boundary-links="true" total-items="totalItems" ng-model="currentPage" items-per-page="itemsPerPage" class="pagination-sm justify-content-center" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></ul>
+            </div>
+         </div>
+      </div>
+      <div class="card-body" ng-show="new">
+         <button class="btn btn-info btn-sm mb-2" tooltip title="Volver" ng-click="return()"><i class="fas fa-reply"></i></button>
+         <button class="btn btn-success btn-sm mb-2" tooltip title="Guardar usuario" ng-click="save()" ng-disabled = "disabled"><i class="far fa-save"></i></button>
+         <button ng-show = "licenses.updateUsers" class="btn btn-warning btn-sm mb-2 float-right" tooltip title="Modificar Usuario" ng-click = "allowUpdate()"><i class="far fa-edit"></i></button><br />
+         <div class="card">
+            <div class="card-header">
+               <small>Creador de usuarios</small>
+            </div>
+            <div class="card-body">
+               <nav>
+                  <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                     <a ng-class="{'nav-item': true, 'nav-link': true, 'active': isSet(1)}" id="nav-information-tab" data-toggle="tab" ng-click="setTab(1)" role="tab" aria-controls="nav-home" aria-selected="true">Información personal</a>
+                     <a ng-class="{'nav-item': true, 'nav-link': true, 'active': isSet(2)}" id="nav-licenses-tab" data-toggle="tab" ng-click="setTab(2)" role="tab" aria-controls="nav-profile" aria-selected="false">Permisos</a>
+                     <a ng-class="{'nav-item': true, 'nav-link': true, 'active': isSet(3)}" id="nav-notices-tab" data-toggle="tab" ng-click="setTab(3)" role="tab" aria-controls="nav-contact" aria-selected="false">Noticias</a>
+                  </div>
+               </nav>
+               <div class="tab-content" id="userTabContent">
+                  <div id="info_personal" ng-show="isSet(1)">
+                     <div class="card border-top-0 rounded-0 rounded-bottom">
+                        <div class="card-body">
+                           <form>
+                              <div class="form-row">
+                                 <div class="form-group col-md-3">
+                                    <label for="staticEmail2">Nombre:</label>
+                                    <input ng-disabled = "disabled" class="form-control form-control-sm" placeholder="Nombre del usuario" ng-model="user.nombre" maxlength="100" rows="3" />
+                                 </div>
+                                 <div class="form-group col-md-4">
+                                    <label for="inputPassword2">Apellidos:</label>
+                                    <input ng-disabled = "disabled" class="form-control form-control-sm" placeholder="Apellidos del usuario" ng-model="user.apellidos" maxlength="200" />
+                                 </div>
+                                 <div class="form-group col-md-3">
+                                    <label for="inputPassword2">Usuario:</label>
+                                    <input ng-disabled = "disabled" class="form-control form-control-sm" placeholder="Usuario para login" ng-model="user.user" maxlength="200" />
+                                 </div>
+                                 <div class="form-group col-md-2">
+                                    <label for="inputPassword2">Sexo:</label>
+                                    <select ng-disabled = "disabled" class="form-control form-control-sm" ng-model="user.sexo" required >
+                                       <option value = "" selected>Selecciona un sexo</option>
+                                       <option value="M">Masculino</option>
+                                       <option value="F">Femenino</option>
+                                    </select>
+                                 </div>
+                              </div>
+                           </form>
+                        </div>
+                     </div>
+                  </div>
+                  <div id="permisos" ng-show="isSet(2)">
+                     <div class="card border-top-0 rounded-0 rounded-bottom">
+                        <div class="card-body">
+                           <form>
+                              <div class="form-row">
+                                 <div class="form-group col-md-6">
+                                    <p><label class="label label-info">Usuarios:</label></p>
+                                    <md-checkbox ng-disabled = "disabled" ng-model = "indUser.all" ng-click = "toggleAllUser()" class="md-primary">
+                                       Seleccinar todos los permisos
+                                    </md-checkbox>
+                                    <div class="demo-select-all-checkboxes">
+                                       <md-checkbox ng-model = "indUser.showUsers" ng-disabled = "indUser.all || disabled" class="md-primary">
+                                          El usuario podrá acceder a la pestaña usuarios
+                                       </md-checkbox>
+                                       <md-checkbox ng-model = "indUser.createUsers" ng-disabled = "indUser.all || disabled" class="md-primary">
+                                          El usuario podrá crear nuevos usuarios
+                                       </md-checkbox>
+                                       <md-checkbox ng-model = "indUser.updateUsers" ng-disabled = "indUser.all || disabled" class="md-primary">
+                                          El usuario podrá modificar los usuarios existentes
+                                       </md-checkbox>
+                                       <md-checkbox ng-model = "indUser.deleteUsers" ng-disabled = "indUser.all || disabled" class="md-primary">
+                                          El usuario podrá eliminar los usuarios existentes
+                                       </md-checkbox>
+                                    </div>
+                                 </div>
+                                 <div class="form-group col-md-6">
+                                    <p><label class="label label-info">Noticias:</label></p>
+                                    <md-checkbox ng-disabled = "disabled" ng-model = "indNews.all" ng-click = "toggleAllNotices()" class="md-primary">
+                                       Seleccionar todos los permisos
+                                    </md-checkbox>
+                                    <div class="demo-select-all-checkboxes ">
+                                       <md-checkbox ng-model = "indNews.showNews" ng-disabled = "indNews.all || disabled" class="md-primary">
+                                          El usuario podrá acceder a la pestaña noticias
+                                       </md-checkbox>
+                                       <md-checkbox ng-model = "indNews.createNews" ng-disabled = "indNews.all || disabled" class="md-primary">
+                                          El usuario podrá crear nuevas noticias
+                                       </md-checkbox>
+                                       <md-checkbox ng-model = "indNews.updateNews" ng-disabled = "indNews.all || disabled" class="md-primary">
+                                          El usuario podrá modificar las noticias existentes
+                                       </md-checkbox>
+                                       <md-checkbox ng-model = "indNews.deleteNews" ng-disabled = "indNews.all || disabled" class="md-primary">
+                                          El usuario podrá eliminar las noticias existentes
+                                       </md-checkbox>
+                                       <md-checkbox ng-model = "indNews.capacityValidation" ng-disabled = "indNews.all || disabled" class="md-primary">
+                                          El usuario podrá validar aquellas noticas que no hayan sido validadas
+                                       </md-checkbox>
+                                       <md-checkbox ng-model = "indNews.validatedNews" ng-disabled = "indNews.all || disabled" class="md-primary">
+                                          Las noticias de este usuario se crearán ya validadas
+                                       </md-checkbox>
+                                    </div>
+                                 </div>
+                              </div>
+                           </form>
+                        </div>
+                     </div>
+                  </div>
+                  <div id="noticias_persona" ng-show="isSet(3)">
+                     <div class="card border-top-0 rounded-0 rounded-bottom">
+                        <div class="card-body">
+                           <table class="table table-hover table-bordered">
+                              <thead>
+                                 <tr>
+                                    <th>Acción</th>
+                                    <th>Nombre</th>
+                                    <th>Apellidos</th>
+                                 </tr>
+                              </thead>
+                              <tbody>
+                                 <tr ng-repeat="n in notices">
+                                    <td>
+                                       <button class="btn btn-info btn-sm" tooltip title="Ver noticia" ng-click="verNoticia(n.ID)"><i class="fas fa-info-circle"></i></button>
+                                    </td>
+                                    <td>{{ n.TITULO }}</td>
+                                    <td>{{ n.FECHA | date: "dd/MM/yyyy" }}</td>
+                                 </tr>
+                              </tbody>
+                           </table>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
